@@ -78,6 +78,16 @@
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeStart_To_cubeUpThrust.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust_To_cubeNoThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\aMechGameGUIBase.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIBaseStart.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIBaseStart_To_gameGUIUpdate.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIFadeIn.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIFadeIn_To_gameGUIUpdate.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIFadeOut.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIFadeOut_To_gameGUIUpdate.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIUpdate.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIUpdate_To_gameGUIFadeIn.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIUpdate_To_gameGUIFadeOut.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\aMechSimMgr.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrLoose.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrPlayGame.cs" />

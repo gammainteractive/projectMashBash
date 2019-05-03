@@ -21,31 +21,21 @@ using System.Collections;
 
 namespace Artimech
 {
-    public class SimMgr : stateMachineGame
+    public class aMechGameGUIBase : stateMachineGame
     {
-        [Header("SimMgr:")]
+        public enum eActionType { kFadeIn, kFadeOut };
+
+        [Header("aMechGameGUIBase:")]
         [SerializeField]
-        [Tooltip("The tap instruction text object link.")]
-        aMechGameGUIBase m_InfoText;
+        [Tooltip("Link to the active game object")]
+        GameObject m_LinkedGameObject;
 
-        public delegate void StartGame();
-        public static event StartGame OnStartGame;
 
-        private static SimMgr m_Instance = null;
-        /// <summary>Returns an instance of SimMgr </summary>
-        public static SimMgr Inst { get { return m_Instance; } }
 
-        public aMechGameGUIBase InfoText { get => m_InfoText; set => m_InfoText = value; }
+        public GameObject LinkedGameObject { get => m_LinkedGameObject; set => m_LinkedGameObject = value; }
 
         new void Awake()
         {
-            if (m_Instance != null)
-            {
-                Debug.LogError("There was already an instance of SimMgr.");
-                return;
-            }
-            m_Instance = GetComponent<SimMgr>();
-
             base.Awake();
             CreateStates();
         }
@@ -73,15 +63,12 @@ namespace Artimech
         void CreateStates()
         {
 
-            m_CurrentState = AddState(new simMgrStart(this.gameObject), "simMgrStart");
+            m_CurrentState = AddState(new gameGUIBaseStart(this.gameObject), "gameGUIBaseStart");
 
             //<ArtiMechStates>
-            AddState(new simMgrWin(this.gameObject),"simMgrWin");
-            AddState(new simMgrLoose(this.gameObject),"simMgrLoose");
-            AddState(new simMgrStartWin(this.gameObject),"simMgrStartWin");
-            AddState(new simMgrStartLoose(this.gameObject),"simMgrStartLoose");
-            AddState(new simMgrPlayGame(this.gameObject),"simMgrPlayGame");
-            AddState(new simMgrStartGame(this.gameObject),"simMgrStartGame");
+            AddState(new gameGUIFadeOut(this.gameObject), "gameGUIFadeOut");
+            AddState(new gameGUIFadeIn(this.gameObject), "gameGUIFadeIn");
+            AddState(new gameGUIUpdate(this.gameObject), "gameGUIUpdate");
 
         }
     }

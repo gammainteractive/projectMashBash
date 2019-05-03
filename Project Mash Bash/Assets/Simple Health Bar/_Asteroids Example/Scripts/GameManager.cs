@@ -1,4 +1,4 @@
-﻿/* Written by Kaz Crowe */
+/* Written by Kaz Crowe */
 /* GameManager.cs */
 using UnityEngine;
 using System.Collections;

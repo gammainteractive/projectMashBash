@@ -1,4 +1,4 @@
-﻿/* Written by Kaz Crowe */
+/* Written by Kaz Crowe */
 /* SimpleHealthBar.cs */
 using UnityEngine;
 using UnityEngine.UI;

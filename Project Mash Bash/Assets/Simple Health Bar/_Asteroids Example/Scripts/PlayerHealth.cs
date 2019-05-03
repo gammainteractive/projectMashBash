@@ -1,4 +1,4 @@
-﻿/* Written by Kaz Crowe */
+/* Written by Kaz Crowe */
 /* PlayerHealth.cs */
 using UnityEngine;
 using System.Collections;

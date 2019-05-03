@@ -69,6 +69,109 @@
     <Compile Include="Assets\ParticlePack\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\ParticlePack\Shared\Scripts\SimpleCharacterMotor.cs" />
     <Compile Include="Assets\ParticlePack\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMech\aMech.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMech\aMechStartState.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\aMechCube.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeNoThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeNoThrust_To_cubeUpThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeStart.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeStart_To_cubeUpThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust_To_cubeNoThrust.cs" />
+    <Compile Include="Assets\Scripts\Common\gameMgr.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\baseState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\editorStateBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\iMachineBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\iSubscriptionConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\editorStateMachineExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateConditionalTemplate.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateCondSubExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateEditorExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateEmptyExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateEventPublishExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateEventSubscribeExample.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\state_examples\stateMachineTemplate.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateChanger.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateConditionalBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\artimechEditorBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorAddConditionalState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorAddPostCondtionalState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorBaseState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Add.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_CopyStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Delete.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_DeleteCondition.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Load.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Move.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_MoveBackground.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Refactor.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Rename.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Resize.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Save.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editor_Display_To_Wait.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\display_To_Conditionals\editorDisplayToMoveConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editor_Load_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editor_Load_To_Wait.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorAddConditionalToDisplay.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorAddCondToPosAddConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorAddPostCondtionalToDisplay.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorCreateToDistplayConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorRestoreToLoadConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorStartToRestoreConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorStartToWaitConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorWaitToCreateConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\editorWaitToLoadConditional.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_CopyStateMachine_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Delete_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_DeleteCondition_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Move_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_MoveBackground_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Refactor_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Rename_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Resize_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorConditionals\state_To_Display_Conditionals\editor_Save_To_Display.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorCopyStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorCreateState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorDeleteConditionState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorDeleteState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorDisplayImageBaseState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorDisplayWindowsState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorLoadState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorMoveBackground.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorMoveState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorRefactorState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorRenameState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorResizeState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorRestoreState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorSaveState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorStartState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\editorStates\editorWaitState.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateCopyStateMachineWindow.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateDeleteWindow.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateEditor.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateEditorBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateEditorDrawUtils.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateEditorUtils.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateMessageWindow.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateRefactorWindow.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateRenameWindow.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateEditor\stateWindowsNode.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateGameBase.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateMachineEditor.cs" />
+    <Compile Include="Assets\Scripts\Common\statemachine\stateMachineGame.cs" />
+    <Compile Include="Assets\Scripts\Common\templates\monoTemplate.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlAnimCurve.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlBoundingBox.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlDataAndFile.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlDebugDraw.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlDebugPrint.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlEventRouter.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlGameObject.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlLayerMaskExtensions.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlMath.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlMatrix34.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlXmlLoadSave.cs" />
     <Compile Include="Assets\Simple Health Bar\_Asteroids Example\Scripts\AsteroidController.cs" />
     <Compile Include="Assets\Simple Health Bar\_Asteroids Example\Scripts\GameManager.cs" />
     <Compile Include="Assets\Simple Health Bar\_Asteroids Example\Scripts\HealthPickupController.cs" />
@@ -77,6 +180,7 @@
     <Compile Include="Assets\Simple Health Bar\Scripts\SimpleHealthBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\SaveData.xml" />
     <None Include="Assets\Simple Health Bar\README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\ParticlePack\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
@@ -87,6 +191,7 @@
     <None Include="Assets\ParticlePack\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Scripts\Common\statemachine\stateEditor\artimech-config.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\ParticlePack\EffectExamples\Magic Effects\Shaders\Ice.shader" />
@@ -99,6 +204,12 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -108,20 +219,14 @@
     <Reference Include="Unity.Timeline">
       <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids">
-      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>E:/Work/projectMashBash/Project Mash Bash/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

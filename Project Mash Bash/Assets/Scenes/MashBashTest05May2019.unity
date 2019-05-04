@@ -1233,6 +1233,7 @@ MonoBehaviour:
   m_ButtonGuiDiamond: {fileID: 1767830733}
   m_IntroMessageWarmUpTime: 1
   m_IntroMessageHoldAfterFadeIn: 1.8
+  m_PlayIntroGameSound: 1
   m_IntroGameSound: {fileID: 1923421933}
 --- !u!4 &1145630675
 Transform:

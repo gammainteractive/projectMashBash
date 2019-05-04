@@ -46,6 +46,10 @@ namespace Artimech
         float m_IntroMessageHoldAfterFadeIn = 1.5f;
 
         [Header("Sim Audio:")]
+
+        [SerializeField]
+        [Tooltip("Does the game play an intro soundtrack.")]
+        bool m_PlayIntroGameSound = true;
         [SerializeField]
         [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
         AudioSource m_IntroGameSound;
@@ -64,6 +68,7 @@ namespace Artimech
         public AudioSource IntroGameSound { get => m_IntroGameSound; set => m_IntroGameSound = value; }
         public aMechGameGUIBase ButtonGuiParent { get => m_ButtonGuiParent; set => m_ButtonGuiParent = value; }
         public aMechGameGUIBase ButtonGuiDiamond { get => m_ButtonGuiDiamond; set => m_ButtonGuiDiamond = value; }
+        public bool PlayIntroGameSound { get => m_PlayIntroGameSound; set => m_PlayIntroGameSound = value; }
 
         new void Awake()
         {

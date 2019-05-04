@@ -30,6 +30,12 @@ namespace Artimech
         [SerializeField]
         [Tooltip("The tap instruction text object link.")]
         aMechGameGUIBase m_TapToStartText;
+        [SerializeField]
+        [Tooltip("Button Gui Parent.")]
+        aMechGameGUIBase m_ButtonGuiParent;
+        [SerializeField]
+        [Tooltip("Button Gui Diamond.")]
+        aMechGameGUIBase m_ButtonGuiDiamond;
 
         [Header("Timers:")]
         [SerializeField]
@@ -56,6 +62,8 @@ namespace Artimech
         public float IntroMessageHoldAfterFadeIn { get => m_IntroMessageHoldAfterFadeIn; set => m_IntroMessageHoldAfterFadeIn = value; }
         public aMechGameGUIBase TapToStartText { get => m_TapToStartText; set => m_TapToStartText = value; }
         public AudioSource IntroGameSound { get => m_IntroGameSound; set => m_IntroGameSound = value; }
+        public aMechGameGUIBase ButtonGuiParent { get => m_ButtonGuiParent; set => m_ButtonGuiParent = value; }
+        public aMechGameGUIBase ButtonGuiDiamond { get => m_ButtonGuiDiamond; set => m_ButtonGuiDiamond = value; }
 
         new void Awake()
         {

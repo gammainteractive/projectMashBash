@@ -1,4 +1,4 @@
-﻿using Artimech;
+using Artimech;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

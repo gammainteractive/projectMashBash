@@ -87,6 +87,8 @@ namespace Artimech
         public override void Enter()
         {
             SimMgr.Inst.TapToStartText.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            SimMgr.Inst.ButtonGuiParent.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            SimMgr.Inst.ButtonGuiDiamond.Action = aMechGameGUIBase.eActionType.kFadeIn;
             base.Enter();
         }
 

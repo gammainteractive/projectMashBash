@@ -78,6 +78,12 @@
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeStart_To_cubeUpThrust.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechCube\cubeUpThrust_To_cubeNoThrust.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\aMechFighter.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\fighterFadeInAndMoveOntoScreen.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\fighterFadeInAndMoveOntoScreen_To_fighterStart.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\fighterInit.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\fighterInit_To_fighterFadeInAndMoveOntoScreen.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechFighter\fighterStart.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\aMechGameGUIBase.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIBaseStart.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIBaseStart_To_gameGUIGfxSetActive.cs" />

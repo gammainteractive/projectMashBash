@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>gameGUIFadeIn</alias>
     <comment></comment>
-    <posX>260</posX>
-    <posY>220</posY>
+    <posX>529</posX>
+    <posY>94</posY>
     <sizeX>150</sizeX>
     <sizeY>80</sizeY>
   </State>

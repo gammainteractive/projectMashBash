@@ -55,8 +55,8 @@ namespace Artimech
         public gameGUIUpdate(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeOut("gameGUIFadeOut"));
             m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeIn("gameGUIFadeIn"));
+            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeOut("gameGUIFadeOut"));
         }
 
         /// <summary>

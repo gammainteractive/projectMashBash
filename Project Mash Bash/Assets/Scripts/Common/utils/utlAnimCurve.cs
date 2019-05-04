@@ -22,6 +22,11 @@ using UnityEngine;
 
 public static class utlAnimCurve
 {
+    public static float GetLastKeyValue(AnimationCurve curve)
+    {
+        return curve.keys[curve.keys.Length-1].value;
+    }
+
     public static float FindBiggestKeyValue(AnimationCurve curve)
     {
         float biggetKeyValue = -float.MaxValue;

@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -33,8 +34,8 @@ using System.Collections.Generic;
   <State>
     <alias>gameGUIFadeOut</alias>
     <comment></comment>
-    <posX>529</posX>
-    <posY>94</posY>
+    <posX>260</posX>
+    <posY>220</posY>
     <sizeX>150</sizeX>
     <sizeY>80</sizeY>
   </State>
@@ -52,7 +53,7 @@ namespace Artimech
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIFadeOut(GameObject gameobject) : base (gameobject)
+        public gameGUIFadeOut(GameObject gameobject) : base(gameobject)
         {
             //<ArtiMechConditions>
             m_ConditionalList.Add(new gameGUIFadeOut_To_gameGUIUpdate("gameGUIUpdate"));
@@ -63,6 +64,11 @@ namespace Artimech
         /// </summary>
         public override void Update()
         {
+            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
+            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
+            //gfx.CrossFadeAlpha(gameGUIBase.FadeOutCurve.Evaluate(StateTime), gameGUIBase.FadeOutCurve.Evaluate(StateTime), false);
+            gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeOutCurve.Evaluate(StateTime));
+
             base.Update();
         }
 
@@ -87,6 +93,9 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            //aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
+
+            //gameGUIBase.LinkedGameObject.GetComponent<Text>().CrossFadeAlpha(0, 2.0f, false);
             base.Enter();
         }
 
@@ -95,6 +104,13 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
+            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
+            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
+            gfx.CrossFadeAlpha(0, gameGUIBase.FadeOutCurve.Evaluate(StateTime), false);
+
+            if (gameGUIBase.DeActivateOnFadeOut)
+                gameGUIBase.LinkedGameObject.SetActive(true);
+
             base.Exit();
         }
     }

@@ -23,16 +23,32 @@ namespace Artimech
 {
     public class aMechGameGUIBase : stateMachineGame
     {
-        public enum eActionType { kFadeIn, kFadeOut };
+        public enum eActionType { kNada, kFadeIn, kFadeOut };
+        eActionType m_Action = eActionType.kNada;
+        eActionType m_WasAction = eActionType.kNada;
+
 
         [Header("aMechGameGUIBase:")]
         [SerializeField]
         [Tooltip("Link to the active game object")]
         GameObject m_LinkedGameObject;
+        [SerializeField]
+        [Tooltip("Fade in curve in seconds.")]
+        AnimationCurve m_FadeInCurve;
+        [SerializeField]
+        [Tooltip("Fade out curve in seconds.")]
+        AnimationCurve m_FadeOutCurve;
+        [Tooltip("Deactivate On Fade Out")]
+        private bool m_DeActivateOnFadeOut = true;
 
 
 
         public GameObject LinkedGameObject { get => m_LinkedGameObject; set => m_LinkedGameObject = value; }
+        public eActionType Action { get => m_Action; set => m_Action = value; }
+        public eActionType WasAction { get => m_WasAction; }
+        public AnimationCurve FadeOutCurve { get => m_FadeOutCurve; }
+        public AnimationCurve FadeInCurve { get => m_FadeInCurve; }
+        public bool DeActivateOnFadeOut { get => m_DeActivateOnFadeOut; }
 
         new void Awake()
         {
@@ -50,6 +66,7 @@ namespace Artimech
         new void Update()
         {
             base.Update();
+            m_WasAction = Action;
         }
 
         new void FixedUpdate()
@@ -66,8 +83,8 @@ namespace Artimech
             m_CurrentState = AddState(new gameGUIBaseStart(this.gameObject), "gameGUIBaseStart");
 
             //<ArtiMechStates>
-            AddState(new gameGUIFadeOut(this.gameObject), "gameGUIFadeOut");
             AddState(new gameGUIFadeIn(this.gameObject), "gameGUIFadeIn");
+            AddState(new gameGUIFadeOut(this.gameObject), "gameGUIFadeOut");
             AddState(new gameGUIUpdate(this.gameObject), "gameGUIUpdate");
 
         }

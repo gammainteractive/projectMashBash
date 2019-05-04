@@ -87,6 +87,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            //SimMgr.Inst.IntroGameSound.Play();
             base.Enter();
         }
 

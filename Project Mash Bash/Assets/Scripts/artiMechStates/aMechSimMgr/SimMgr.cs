@@ -39,6 +39,11 @@ namespace Artimech
         [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
         float m_IntroMessageHoldAfterFadeIn = 1.5f;
 
+        [Header("Sim Audio:")]
+        [SerializeField]
+        [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
+        AudioSource m_IntroGameSound;
+
         public delegate void StartGame();
         public static event StartGame OnStartGame;
 
@@ -50,6 +55,7 @@ namespace Artimech
         public float IntroMessageWarmUpTime { get => m_IntroMessageWarmUpTime; }
         public float IntroMessageHoldAfterFadeIn { get => m_IntroMessageHoldAfterFadeIn; set => m_IntroMessageHoldAfterFadeIn = value; }
         public aMechGameGUIBase TapToStartText { get => m_TapToStartText; set => m_TapToStartText = value; }
+        public AudioSource IntroGameSound { get => m_IntroGameSound; set => m_IntroGameSound = value; }
 
         new void Awake()
         {

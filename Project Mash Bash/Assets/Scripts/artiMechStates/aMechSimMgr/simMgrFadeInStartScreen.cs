@@ -88,6 +88,7 @@ namespace Artimech
         public override void Enter()
         {
             SimMgr.Inst.InfoText.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            //SimMgr.Inst.IntroGameSound.Play();
             base.Enter();
         }
 

@@ -1,1 +1,1 @@
-aMechFighter,Fighter
+SimMgr,SimMgr

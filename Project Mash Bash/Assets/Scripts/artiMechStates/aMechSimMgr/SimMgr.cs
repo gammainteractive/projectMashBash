@@ -25,8 +25,11 @@ namespace Artimech
     {
         [Header("SimMgr:")]
         [SerializeField]
-        [Tooltip("The tap instruction text object link.")]
+        [Tooltip("Intro Screen Text.")]
         aMechGameGUIBase m_InfoText;
+        [SerializeField]
+        [Tooltip("The tap instruction text object link.")]
+        aMechGameGUIBase m_TapToStartText;
 
         [Header("Timers:")]
         [SerializeField]
@@ -46,6 +49,7 @@ namespace Artimech
         public aMechGameGUIBase InfoText { get => m_InfoText; set => m_InfoText = value; }
         public float IntroMessageWarmUpTime { get => m_IntroMessageWarmUpTime; }
         public float IntroMessageHoldAfterFadeIn { get => m_IntroMessageHoldAfterFadeIn; set => m_IntroMessageHoldAfterFadeIn = value; }
+        public aMechGameGUIBase TapToStartText { get => m_TapToStartText; set => m_TapToStartText = value; }
 
         new void Awake()
         {

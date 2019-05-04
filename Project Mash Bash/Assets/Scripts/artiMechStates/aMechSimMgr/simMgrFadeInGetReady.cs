@@ -86,6 +86,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            SimMgr.Inst.TapToStartText.Action = aMechGameGUIBase.eActionType.kFadeIn;
             base.Enter();
         }
 

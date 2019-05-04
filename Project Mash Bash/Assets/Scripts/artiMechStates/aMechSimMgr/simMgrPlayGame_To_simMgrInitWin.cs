@@ -21,17 +21,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// State Conditionals are created to contain the state transition tests. 
 /// </summary>
 namespace Artimech
 {
-    public class gameGUIFadeIn_To_gameGUIUpdate : stateConditionalBase
+    public class simMgrPlayGame_To_simMgrInitWin : stateConditionalBase
     {
         
-        public gameGUIFadeIn_To_gameGUIUpdate(string changeStateName) : base (changeStateName)
+        public simMgrPlayGame_To_simMgrInitWin(string changeStateName) : base (changeStateName)
         {
             
         }
@@ -53,15 +52,17 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            stateGameBase gameBase = (stateGameBase)state;
-            aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            float lastVal = utlAnimCurve.GetLastKeyValue(gameGUIBase.FadeInCurve);
+            string strOut = null;
 
-            if (gfx.color.a >= lastVal)
-                return m_ChangeStateName;
+#if ARTIMECH_THIS_SHOULD_NEVER_BE_TRUE_BUT_IS_AN_EXAMPLE_OF_A_CONDITION_BEING_TRUE
+            This is an example of setting a contition to true if the gameobject
+            falls below a certain height ingame.
+            if (state.m_GameObject.transform.position.y <= 1000)
+                strOut = m_ChangeStateName;
+#endif
 
-            return null;
+
+            return strOut;
         }
     }
 }

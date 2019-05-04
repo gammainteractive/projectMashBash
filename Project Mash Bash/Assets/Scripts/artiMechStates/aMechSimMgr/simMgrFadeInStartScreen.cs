@@ -31,11 +31,11 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Update</alias>
+    <alias>Fade In Start Screen</alias>
     <comment></comment>
-    <posX>23</posX>
-    <posY>162</posY>
-    <sizeX>146</sizeX>
+    <posX>20</posX>
+    <posY>126</posY>
+    <sizeX>148</sizeX>
     <sizeY>42</sizeY>
   </State>
 </stateMetaData>
@@ -45,18 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gameGUIUpdate : stateGameBase
+    public class simMgrFadeInStartScreen : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIUpdate(GameObject gameobject) : base (gameobject)
+        public simMgrFadeInStartScreen(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeIn("gameGUIFadeIn"));
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeOut("gameGUIFadeOut"));
+            m_ConditionalList.Add(new simMgrFadeInStartScreen_To_simMgrFadeOutStartScreen("simMgrFadeOutStartScreen"));
         }
 
         /// <summary>
@@ -88,6 +87,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            SimMgr.Inst.InfoText.Action = aMechGameGUIBase.eActionType.kFadeIn;
             base.Enter();
         }
 
@@ -96,7 +96,6 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
-            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
             base.Exit();
         }
     }

@@ -31,10 +31,10 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>simMgrStartLoose</alias>
+    <alias>simMgrInitLoose</alias>
     <comment></comment>
-    <posX>108</posX>
-    <posY>309</posY>
+    <posX>105</posX>
+    <posY>375</posY>
     <sizeX>154</sizeX>
     <sizeY>48</sizeY>
   </State>
@@ -45,17 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class simMgrStartLoose : stateGameBase
+    public class simMgrInitLoose : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrStartLoose(GameObject gameobject) : base (gameobject)
+        public simMgrInitLoose(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrStartLoose_To_simMgrLoose("simMgrLoose"));
+            m_ConditionalList.Add(new simMgrInitLoose_To_simMgrLoose("simMgrLoose"));
         }
 
         /// <summary>

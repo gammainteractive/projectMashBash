@@ -54,7 +54,7 @@ namespace Artimech
         {
             stateGameBase gameBase = (stateGameBase)state;
             aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            if (gameGUIBase.Action != gameGUIBase.WasAction && gameGUIBase.Action == gameGUIBase.eActionType.kFadeOut)
+            if (gameGUIBase.Action != gameGUIBase.WasAction && gameGUIBase.Action == aMechGameGUIBase.eActionType.kFadeOut)
                 return m_ChangeStateName;
             return null;
         }

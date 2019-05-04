@@ -21,17 +21,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// State Conditionals are created to contain the state transition tests. 
 /// </summary>
 namespace Artimech
 {
-    public class gameGUIFadeIn_To_gameGUIUpdate : stateConditionalBase
+    public class gameGUIBaseStart_To_gameGUIGfxSetActive : stateConditionalBase
     {
         
-        public gameGUIFadeIn_To_gameGUIUpdate(string changeStateName) : base (changeStateName)
+        public gameGUIBaseStart_To_gameGUIGfxSetActive(string changeStateName) : base (changeStateName)
         {
             
         }
@@ -53,15 +52,7 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            stateGameBase gameBase = (stateGameBase)state;
-            aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            float lastVal = utlAnimCurve.GetLastKeyValue(gameGUIBase.FadeInCurve);
-
-            if (gfx.color.a >= lastVal)
-                return m_ChangeStateName;
-
-            return null;
+            return m_ChangeStateName;
         }
     }
 }

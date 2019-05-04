@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>gameGUIBaseStart</alias>
+    <alias>Init</alias>
     <comment></comment>
     <posX>20</posX>
     <posY>40</posY>
-    <sizeX>150</sizeX>
-    <sizeY>80</sizeY>
+    <sizeX>148</sizeX>
+    <sizeY>40</sizeY>
   </State>
 </stateMetaData>
 
@@ -55,7 +55,7 @@ namespace Artimech
         public gameGUIBaseStart(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gameGUIBaseStart_To_gameGUIUpdate("gameGUIUpdate"));
+            m_ConditionalList.Add(new gameGUIBaseStart_To_gameGUIGfxSetActive("gameGUIGfxSetActive"));
         }
 
         /// <summary>

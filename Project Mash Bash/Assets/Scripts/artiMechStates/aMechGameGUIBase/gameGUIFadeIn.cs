@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -31,12 +32,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>gameGUIFadeIn</alias>
+    <alias>Fade In</alias>
     <comment></comment>
-    <posX>529</posX>
-    <posY>94</posY>
-    <sizeX>150</sizeX>
-    <sizeY>80</sizeY>
+    <posX>255</posX>
+    <posY>161</posY>
+    <sizeX>142</sizeX>
+    <sizeY>49</sizeY>
   </State>
 </stateMetaData>
 
@@ -63,6 +64,9 @@ namespace Artimech
         /// </summary>
         public override void Update()
         {
+            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
+            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
+            gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeInCurve.Evaluate(StateTime));
             base.Update();
         }
 
@@ -95,6 +99,8 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
+            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
+            gameGUIBase.WasAction = gameGUIBase.Action;
             base.Exit();
         }
     }

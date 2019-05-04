@@ -28,6 +28,14 @@ namespace Artimech
         [Tooltip("The tap instruction text object link.")]
         aMechGameGUIBase m_InfoText;
 
+        [Header("Timers:")]
+        [SerializeField]
+        [Tooltip("How long to wait till the intro message gets displayed.")]
+        float m_IntroMessageWarmUpTime = 0.5f;
+        [SerializeField]
+        [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
+        float m_IntroMessageHoldAfterFadeIn = 1.5f;
+
         public delegate void StartGame();
         public static event StartGame OnStartGame;
 
@@ -36,6 +44,8 @@ namespace Artimech
         public static SimMgr Inst { get { return m_Instance; } }
 
         public aMechGameGUIBase InfoText { get => m_InfoText; set => m_InfoText = value; }
+        public float IntroMessageWarmUpTime { get => m_IntroMessageWarmUpTime; }
+        public float IntroMessageHoldAfterFadeIn { get => m_IntroMessageHoldAfterFadeIn; set => m_IntroMessageHoldAfterFadeIn = value; }
 
         new void Awake()
         {
@@ -73,15 +83,17 @@ namespace Artimech
         void CreateStates()
         {
 
-            m_CurrentState = AddState(new simMgrStart(this.gameObject), "simMgrStart");
+            m_CurrentState = AddState(new simMgrInit(this.gameObject), "simMgrInit");
 
             //<ArtiMechStates>
+            AddState(new simMgrFadeInGetReady(this.gameObject),"simMgrFadeInGetReady");
+            AddState(new simMgrFadeOutStartScreen(this.gameObject),"simMgrFadeOutStartScreen");
             AddState(new simMgrWin(this.gameObject),"simMgrWin");
             AddState(new simMgrLoose(this.gameObject),"simMgrLoose");
-            AddState(new simMgrStartWin(this.gameObject),"simMgrStartWin");
-            AddState(new simMgrStartLoose(this.gameObject),"simMgrStartLoose");
+            AddState(new simMgrInitWin(this.gameObject),"simMgrInitWin");
+            AddState(new simMgrInitLoose(this.gameObject),"simMgrInitLoose");
             AddState(new simMgrPlayGame(this.gameObject),"simMgrPlayGame");
-            AddState(new simMgrStartGame(this.gameObject),"simMgrStartGame");
+            AddState(new simMgrFadeInStartScreen(this.gameObject),"simMgrFadeInStartScreen");
 
         }
     }

@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>simMgrPlayGame</alias>
     <comment></comment>
-    <posX>265</posX>
-    <posY>184</posY>
+    <posX>271</posX>
+    <posY>269</posY>
     <sizeX>151</sizeX>
     <sizeY>50</sizeY>
   </State>
@@ -55,8 +55,8 @@ namespace Artimech
         public simMgrPlayGame(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrPlayGame_To_simMgrStartWin("simMgrStartWin"));
-            m_ConditionalList.Add(new simMgrPlayGame_To_simMgrStartLoose("simMgrStartLoose"));
+            m_ConditionalList.Add(new simMgrPlayGame_To_simMgrInitWin("simMgrInitWin"));
+            m_ConditionalList.Add(new simMgrPlayGame_To_simMgrInitLoose("simMgrInitLoose"));
         }
 
         /// <summary>

@@ -32,12 +32,12 @@ using UnityEngine.UI;
 
 <stateMetaData>
   <State>
-    <alias>gameGUIFadeOut</alias>
+    <alias>Fade Out</alias>
     <comment></comment>
-    <posX>260</posX>
-    <posY>220</posY>
-    <sizeX>150</sizeX>
-    <sizeY>80</sizeY>
+    <posX>24</posX>
+    <posY>275</posY>
+    <sizeX>156</sizeX>
+    <sizeY>49</sizeY>
   </State>
 </stateMetaData>
 
@@ -66,7 +66,6 @@ namespace Artimech
         {
             aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
             Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            //gfx.CrossFadeAlpha(gameGUIBase.FadeOutCurve.Evaluate(StateTime), gameGUIBase.FadeOutCurve.Evaluate(StateTime), false);
             gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeOutCurve.Evaluate(StateTime));
 
             base.Update();
@@ -93,9 +92,6 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            //aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
-
-            //gameGUIBase.LinkedGameObject.GetComponent<Text>().CrossFadeAlpha(0, 2.0f, false);
             base.Enter();
         }
 
@@ -105,11 +101,11 @@ namespace Artimech
         public override void Exit()
         {
             aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            gfx.CrossFadeAlpha(0, gameGUIBase.FadeOutCurve.Evaluate(StateTime), false);
+
+            gameGUIBase.WasAction = gameGUIBase.Action;
 
             if (gameGUIBase.DeActivateOnFadeOut)
-                gameGUIBase.LinkedGameObject.SetActive(true);
+                gameGUIBase.LinkedGameObject.SetActive(false);
 
             base.Exit();
         }

@@ -38,17 +38,24 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Fade out curve in seconds.")]
         AnimationCurve m_FadeOutCurve;
+        [SerializeField]
         [Tooltip("Deactivate On Fade Out")]
         private bool m_DeActivateOnFadeOut = true;
-
-
+        [SerializeField]
+        [Tooltip("Sets the alpha of a give target when starting.")]
+        bool m_AlphaStartBool = true;
+        [SerializeField]
+        [Tooltip("How the graphics starts out in the alpha setting.")]
+        float m_AlphaStart = 0.0f;
 
         public GameObject LinkedGameObject { get => m_LinkedGameObject; set => m_LinkedGameObject = value; }
         public eActionType Action { get => m_Action; set => m_Action = value; }
-        public eActionType WasAction { get => m_WasAction; }
         public AnimationCurve FadeOutCurve { get => m_FadeOutCurve; }
         public AnimationCurve FadeInCurve { get => m_FadeInCurve; }
         public bool DeActivateOnFadeOut { get => m_DeActivateOnFadeOut; }
+        public float AlphaStart { get => m_AlphaStart; }
+        public bool AlphaStartBool { get => m_AlphaStartBool; }
+        public eActionType WasAction { get => m_WasAction; set => m_WasAction = value; }
 
         new void Awake()
         {
@@ -66,7 +73,7 @@ namespace Artimech
         new void Update()
         {
             base.Update();
-            m_WasAction = Action;
+            //WasAction = Action;
         }
 
         new void FixedUpdate()
@@ -83,6 +90,7 @@ namespace Artimech
             m_CurrentState = AddState(new gameGUIBaseStart(this.gameObject), "gameGUIBaseStart");
 
             //<ArtiMechStates>
+            AddState(new gameGUIGfxSetActive(this.gameObject), "gameGUIGfxSetActive");
             AddState(new gameGUIFadeIn(this.gameObject), "gameGUIFadeIn");
             AddState(new gameGUIFadeOut(this.gameObject), "gameGUIFadeOut");
             AddState(new gameGUIUpdate(this.gameObject), "gameGUIUpdate");

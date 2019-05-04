@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class simMgrStartLoose_To_simMgrLoose : stateConditionalBase
+    public class simMgrInitWin_To_simMgrWin : stateConditionalBase
     {
         
-        public simMgrStartLoose_To_simMgrLoose(string changeStateName) : base (changeStateName)
+        public simMgrInitWin_To_simMgrWin(string changeStateName) : base (changeStateName)
         {
             
         }

@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>simMgrStartWin</alias>
+    <alias>Fade Out Start Screen</alias>
     <comment></comment>
-    <posX>428</posX>
-    <posY>301</posY>
-    <sizeX>163</sizeX>
-    <sizeY>54</sizeY>
+    <posX>18</posX>
+    <posY>218</posY>
+    <sizeX>165</sizeX>
+    <sizeY>39</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class simMgrStartWin : stateGameBase
+    public class simMgrFadeOutStartScreen : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrStartWin(GameObject gameobject) : base (gameobject)
+        public simMgrFadeOutStartScreen(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrStartWin_To_simMgrWin("simMgrWin"));
+            m_ConditionalList.Add(new simMgrFadeOutStartScreen_To_simMgrFadeInGetReady("simMgrFadeInGetReady"));
         }
 
         /// <summary>
@@ -87,6 +87,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            SimMgr.Inst.InfoText.Action = aMechGameGUIBase.eActionType.kFadeOut;
             base.Enter();
         }
 

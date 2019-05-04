@@ -31,11 +31,11 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Update</alias>
+    <alias>Fade In Screen Ready</alias>
     <comment></comment>
-    <posX>23</posX>
-    <posY>162</posY>
-    <sizeX>146</sizeX>
+    <posX>227</posX>
+    <posY>38</posY>
+    <sizeX>177</sizeX>
     <sizeY>42</sizeY>
   </State>
 </stateMetaData>
@@ -45,18 +45,16 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gameGUIUpdate : stateGameBase
+    public class simMgrFadeInGetReady : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIUpdate(GameObject gameobject) : base (gameobject)
+        public simMgrFadeInGetReady(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeIn("gameGUIFadeIn"));
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeOut("gameGUIFadeOut"));
         }
 
         /// <summary>
@@ -96,7 +94,6 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
-            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
             base.Exit();
         }
     }

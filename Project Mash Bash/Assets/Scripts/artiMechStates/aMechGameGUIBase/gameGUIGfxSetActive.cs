@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -31,12 +32,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>simMgrStart</alias>
+    <alias>Init Gfx Settings</alias>
     <comment></comment>
-    <posX>20</posX>
-    <posY>40</posY>
-    <sizeX>146</sizeX>
-    <sizeY>43</sizeY>
+    <posX>243</posX>
+    <posY>37</posY>
+    <sizeX>152</sizeX>
+    <sizeY>49</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +46,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class simMgrStart : stateGameBase
+    public class gameGUIGfxSetActive : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrStart(GameObject gameobject) : base (gameobject)
+        public gameGUIGfxSetActive(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrStart_To_simMgrStartGame("simMgrStartGame"));
+            m_ConditionalList.Add(new gameGUIGfxSetActive_To_gameGUIUpdate("gameGUIUpdate"));
         }
 
         /// <summary>
@@ -87,6 +88,16 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            
+            aMechGameGUIBase gameGUIBase =StateGameObject.GetComponent<aMechGameGUIBase>();
+            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
+            
+            if (gameGUIBase.AlphaStartBool)
+            {
+                gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.AlphaStart);
+            }
+
+            gfx.gameObject.SetActive(true);
             base.Enter();
         }
 

@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class simMgrStartWin_To_simMgrWin : stateConditionalBase
+    public class simMgrFadeOutStartScreen_To_simMgrFadeInGetReady : stateConditionalBase
     {
         
-        public simMgrStartWin_To_simMgrWin(string changeStateName) : base (changeStateName)
+        public simMgrFadeOutStartScreen_To_simMgrFadeInGetReady(string changeStateName) : base (changeStateName)
         {
             
         }

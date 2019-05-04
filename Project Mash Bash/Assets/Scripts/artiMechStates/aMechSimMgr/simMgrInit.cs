@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Update</alias>
+    <alias>simMgrInit</alias>
     <comment></comment>
-    <posX>23</posX>
-    <posY>162</posY>
+    <posX>20</posX>
+    <posY>40</posY>
     <sizeX>146</sizeX>
-    <sizeY>42</sizeY>
+    <sizeY>43</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,18 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gameGUIUpdate : stateGameBase
+    public class simMgrInit : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIUpdate(GameObject gameobject) : base (gameobject)
+        public simMgrInit(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeIn("gameGUIFadeIn"));
-            m_ConditionalList.Add(new gameGUIUpdate_To_gameGUIFadeOut("gameGUIFadeOut"));
+            m_ConditionalList.Add(new simMgrInit_To_simMgrFadeInStartScreen("simMgrFadeInStartScreen"));
         }
 
         /// <summary>
@@ -96,7 +95,6 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
-            aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
             base.Exit();
         }
     }

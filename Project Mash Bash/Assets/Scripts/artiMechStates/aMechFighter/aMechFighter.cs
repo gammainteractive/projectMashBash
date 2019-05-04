@@ -38,6 +38,9 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Move onto screen curve.")]
         Transform m_StartTrans;
+        [SerializeField]
+        [Tooltip("Punch Offset Position.")]
+        Vector3 m_PunchOffsetPos;
 
         Vector3 m_StartPos;
 
@@ -46,6 +49,7 @@ namespace Artimech
         public AnimationCurve MoveIntoScreenCurve { get => m_MoveIntoScreenCurve;}
         public Vector3 SpawnPos { get => m_StartTrans.position; }
         public Vector3 StartPos { get => m_StartPos;}
+        public Vector3 PunchOffsetPos { get => m_PunchOffsetPos;}
 
         new void Awake()
         {

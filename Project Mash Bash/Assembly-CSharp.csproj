@@ -207,6 +207,7 @@
     <Compile Include="Assets\Scripts\Common\utils\utlLayerMaskExtensions.cs" />
     <Compile Include="Assets\Scripts\Common\utils\utlMath.cs" />
     <Compile Include="Assets\Scripts\Common\utils\utlMatrix34.cs" />
+    <Compile Include="Assets\Scripts\Common\utils\utlRaycastMask.cs" />
     <Compile Include="Assets\Scripts\Common\utils\utlXmlLoadSave.cs" />
     <Compile Include="Assets\Simple Health Bar\_Asteroids Example\Scripts\AsteroidController.cs" />
     <Compile Include="Assets\Simple Health Bar\_Asteroids Example\Scripts\GameManager.cs" />

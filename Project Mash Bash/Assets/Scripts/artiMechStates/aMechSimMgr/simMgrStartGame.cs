@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Fade In Screen Ready</alias>
+    <alias>simMgrStartGame</alias>
     <comment></comment>
-    <posX>227</posX>
-    <posY>38</posY>
-    <sizeX>177</sizeX>
-    <sizeY>42</sizeY>
+    <posX>370</posX>
+    <posY>117</posY>
+    <sizeX>149</sizeX>
+    <sizeY>52</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +45,16 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class simMgrFadeInGetReady : stateGameBase
+    public class simMgrStartGame : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrFadeInGetReady(GameObject gameobject) : base (gameobject)
+        public simMgrStartGame(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrFadeInGetReady_To_simMgrStartGame("simMgrStartGame"));
         }
 
         /// <summary>
@@ -87,9 +86,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            SimMgr.Inst.TapToStartText.Action = aMechGameGUIBase.eActionType.kFadeIn;
-            SimMgr.Inst.ButtonGuiParent.Action = aMechGameGUIBase.eActionType.kFadeIn;
-            SimMgr.Inst.ButtonGuiDiamond.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            SimMgr.Inst.TapToStartText.Action = aMechGameGUIBase.eActionType.kFadeOut;
             base.Enter();
         }
 

@@ -55,7 +55,7 @@ namespace Artimech
         public simMgrInit(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrInit_To_simMgrFadeInStartScreen("simMgrFadeInStartScreen"));
+            m_ConditionalList.Add(new simMgrInit_To_simMgrFadeInGetReady("simMgrFadeInGetReady"));
         }
 
         /// <summary>

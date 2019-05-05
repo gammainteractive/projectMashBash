@@ -27,22 +27,22 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class simMgrInit_To_simMgrFadeInStartScreen : stateConditionalBase
+    public class simMgrInit_To_simMgrFadeInGetReady : stateConditionalBase
     {
-
-        public simMgrInit_To_simMgrFadeInStartScreen(string changeStateName) : base(changeStateName)
+        
+        public simMgrInit_To_simMgrFadeInGetReady(string changeStateName) : base (changeStateName)
         {
-
+            
         }
 
         public override void Enter(baseState state)
         {
-
+            
         }
 
         public override void Exit(baseState state)
         {
-
+            
         }
 
         /// <summary>
@@ -52,10 +52,7 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            stateGameBase gameBase = (stateGameBase)state;
-            if (gameBase.StateTime > SimMgr.Inst.IntroMessageWarmUpTime)
-                return m_ChangeStateName;
-            return null;
+            return m_ChangeStateName;
         }
     }
 }

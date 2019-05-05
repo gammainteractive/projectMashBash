@@ -53,7 +53,7 @@ namespace Artimech
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIGfxSetActive(GameObject gameobject) : base (gameobject)
+        public gameGUIGfxSetActive(GameObject gameobject) : base(gameobject)
         {
             //<ArtiMechConditions>
             m_ConditionalList.Add(new gameGUIGfxSetActive_To_gameGUIUpdate("gameGUIUpdate"));
@@ -88,16 +88,20 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            
-            aMechGameGUIBase gameGUIBase =StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            
-            if (gameGUIBase.AlphaStartBool)
-            {
-                gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.AlphaStart);
-            }
 
-            gfx.gameObject.SetActive(true);
+            aMechGameGUIBase gameGUIBase = StateGameObject.GetComponent<aMechGameGUIBase>();
+
+            for (int i = 0; i < gameGUIBase.LinkedGameObjects.Length; i++)
+            {
+                Graphic gfx = gameGUIBase.LinkedGameObjects[i].GetComponent<Graphic>();
+
+                if (gameGUIBase.AlphaStartBool)
+                {
+                    gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.AlphaStart);
+                }
+
+                gfx.gameObject.SetActive(true);
+            }
             base.Enter();
         }
 

@@ -31,7 +31,7 @@ namespace Artimech
         [Header("aMechGameGUIBase:")]
         [SerializeField]
         [Tooltip("Link to the active game object")]
-        GameObject m_LinkedGameObject;
+        GameObject[] m_LinkedGameObjects;
         [SerializeField]
         [Tooltip("Fade in curve in seconds.")]
         AnimationCurve m_FadeInCurve;
@@ -48,7 +48,6 @@ namespace Artimech
         [Tooltip("How the graphics starts out in the alpha setting.")]
         float m_AlphaStart = 0.0f;
 
-        public GameObject LinkedGameObject { get => m_LinkedGameObject; set => m_LinkedGameObject = value; }
         public eActionType Action { get => m_Action; set => m_Action = value; }
         public AnimationCurve FadeOutCurve { get => m_FadeOutCurve; }
         public AnimationCurve FadeInCurve { get => m_FadeInCurve; }
@@ -56,6 +55,7 @@ namespace Artimech
         public float AlphaStart { get => m_AlphaStart; }
         public bool AlphaStartBool { get => m_AlphaStartBool; }
         public eActionType WasAction { get => m_WasAction; set => m_WasAction = value; }
+        public GameObject[] LinkedGameObjects { get => m_LinkedGameObjects; set => m_LinkedGameObjects = value; }
 
         new void Awake()
         {

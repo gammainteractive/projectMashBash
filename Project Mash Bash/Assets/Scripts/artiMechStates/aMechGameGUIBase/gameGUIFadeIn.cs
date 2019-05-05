@@ -53,7 +53,7 @@ namespace Artimech
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gameGUIFadeIn(GameObject gameobject) : base (gameobject)
+        public gameGUIFadeIn(GameObject gameobject) : base(gameobject)
         {
             //<ArtiMechConditions>
             m_ConditionalList.Add(new gameGUIFadeIn_To_gameGUIUpdate("gameGUIUpdate"));
@@ -65,8 +65,11 @@ namespace Artimech
         public override void Update()
         {
             aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeInCurve.Evaluate(StateTime));
+            for (int i = 0; i < gameGUIBase.LinkedGameObjects.Length; i++)
+            {
+                Graphic gfx = gameGUIBase.LinkedGameObjects[i].GetComponent<Graphic>();
+                gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeInCurve.Evaluate(StateTime));
+            }
             base.Update();
         }
 

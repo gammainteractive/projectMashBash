@@ -18,6 +18,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Artimech
 {
@@ -54,6 +55,12 @@ namespace Artimech
         [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
         AudioSource m_IntroGameSound;
 
+        [Header("Buttons:")]
+        [SerializeField]
+        [Tooltip("Button that starts the game.")]
+        private Button m_TapToStartButton;
+        bool m_TapToStartBool = false;
+
         public delegate void StartGame();
         public static event StartGame OnStartGame;
 
@@ -69,6 +76,14 @@ namespace Artimech
         public aMechGameGUIBase ButtonGuiParent { get => m_ButtonGuiParent; set => m_ButtonGuiParent = value; }
         public aMechGameGUIBase ButtonGuiDiamond { get => m_ButtonGuiDiamond; set => m_ButtonGuiDiamond = value; }
         public bool PlayIntroGameSound { get => m_PlayIntroGameSound; set => m_PlayIntroGameSound = value; }
+
+        public Button TapToStartButton { get => m_TapToStartButton; set => m_TapToStartButton = value; }
+        public bool TapToStartBool { get => m_TapToStartBool; set => m_TapToStartBool = value; }
+
+        void OnClickTapToStartButton()
+        {
+            TapToStartBool = true;
+        }
 
         new void Awake()
         {
@@ -86,6 +101,7 @@ namespace Artimech
         // Use this for initialization
         new void Start()
         {
+            TapToStartButton.onClick.AddListener(OnClickTapToStartButton);
             base.Start();
         }
 
@@ -109,6 +125,7 @@ namespace Artimech
             m_CurrentState = AddState(new simMgrInit(this.gameObject), "simMgrInit");
 
             //<ArtiMechStates>
+            AddState(new simMgrStartGame(this.gameObject),"simMgrStartGame");
             AddState(new simMgrFadeInGetReady(this.gameObject),"simMgrFadeInGetReady");
             AddState(new simMgrFadeOutStartScreen(this.gameObject),"simMgrFadeOutStartScreen");
             AddState(new simMgrWin(this.gameObject),"simMgrWin");

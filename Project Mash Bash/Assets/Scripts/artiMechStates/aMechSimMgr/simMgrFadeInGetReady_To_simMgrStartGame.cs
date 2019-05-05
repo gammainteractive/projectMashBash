@@ -21,33 +21,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// State Conditionals are created to contain the state transition tests. 
 /// </summary>
 namespace Artimech
 {
-    public class gameGUIFadeOut_To_gameGUIUpdate : stateConditionalBase
+    public class simMgrFadeInGetReady_To_simMgrStartGame : stateConditionalBase
     {
-
-        public gameGUIFadeOut_To_gameGUIUpdate(string changeStateName) : base(changeStateName)
+        
+        public simMgrFadeInGetReady_To_simMgrStartGame(string changeStateName) : base (changeStateName)
         {
-
+            
         }
 
         public override void Enter(baseState state)
         {
-
+            
         }
 
         public override void Exit(baseState state)
         {
-            /*stateGameBase gameBase = (stateGameBase)state;
-            aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            float lastVal = utlAnimCurve.GetLastKeyValue(gameGUIBase.FadeOutCurve);
-            gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeOutCurve.Evaluate(lastVal));*/
+            
         }
 
         /// <summary>
@@ -57,14 +52,8 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            stateGameBase gameBase = (stateGameBase)state;
-            aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObjects[0].GetComponent<Graphic>();
-            float lastVal = utlAnimCurve.GetLastKeyValue(gameGUIBase.FadeOutCurve);
-
-            if (gfx.color.a <= lastVal)
+           if (SimMgr.Inst.TapToStartBool)
                 return m_ChangeStateName;
-
             return null;
         }
     }

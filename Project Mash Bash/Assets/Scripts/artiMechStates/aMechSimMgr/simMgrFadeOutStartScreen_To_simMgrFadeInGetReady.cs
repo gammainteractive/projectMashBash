@@ -55,7 +55,7 @@ namespace Artimech
         {
 
             //if (utlMath.FloatDistance(SimMgr.Inst.InfoTex.GetComponent<Graphic>().color.a, 0.0f) < 0.1f)
-            if(!SimMgr.Inst.InfoText.LinkedGameObject.activeSelf)
+            if(!SimMgr.Inst.InfoText.LinkedGameObjects[0].activeSelf)
                 return m_ChangeStateName;
 
             return null;

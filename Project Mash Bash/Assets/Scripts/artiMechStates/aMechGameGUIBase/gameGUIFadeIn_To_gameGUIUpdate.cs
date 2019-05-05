@@ -55,7 +55,7 @@ namespace Artimech
         {
             stateGameBase gameBase = (stateGameBase)state;
             aMechGameGUIBase gameGUIBase = gameBase.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
+            Graphic gfx = gameGUIBase.LinkedGameObjects[0].GetComponent<Graphic>();
             float lastVal = utlAnimCurve.GetLastKeyValue(gameGUIBase.FadeInCurve);
 
             if (gfx.color.a >= lastVal)

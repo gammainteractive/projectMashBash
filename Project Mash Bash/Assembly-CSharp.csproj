@@ -99,12 +99,13 @@
     <Compile Include="Assets\Scripts\artiMechStates\aMechGameGUIBase\gameGUIUpdate_To_gameGUIFadeOut.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\SimMgr.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeInGetReady.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeInGetReady_To_simMgrStartGame.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeInStartScreen.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeInStartScreen_To_simMgrFadeOutStartScreen.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeOutStartScreen.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrFadeOutStartScreen_To_simMgrFadeInGetReady.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInit.cs" />
-    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInit_To_simMgrFadeInStartScreen.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInit_To_simMgrFadeInGetReady.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInitLoose.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInitLoose_To_simMgrLoose.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrInitWin.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrPlayGame.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrPlayGame_To_simMgrInitLoose.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrPlayGame_To_simMgrInitWin.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrStartGame.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrWin.cs" />
     <Compile Include="Assets\Scripts\Common\gameMgr.cs" />
     <Compile Include="Assets\Scripts\Common\statemachine\baseState.cs" />

@@ -65,8 +65,11 @@ namespace Artimech
         public override void Update()
         {
             aMechGameGUIBase gameGUIBase = this.StateGameObject.GetComponent<aMechGameGUIBase>();
-            Graphic gfx = gameGUIBase.LinkedGameObject.GetComponent<Graphic>();
-            gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeOutCurve.Evaluate(StateTime));
+            for (int i = 0; i < gameGUIBase.LinkedGameObjects.Length; i++)
+            {
+                Graphic gfx = gameGUIBase.LinkedGameObjects[i].GetComponent<Graphic>();
+                gfx.color = new Color(gfx.color.r, gfx.color.g, gfx.color.b, gameGUIBase.FadeOutCurve.Evaluate(StateTime));
+            }
 
             base.Update();
         }
@@ -105,7 +108,11 @@ namespace Artimech
             gameGUIBase.WasAction = gameGUIBase.Action;
 
             if (gameGUIBase.DeActivateOnFadeOut)
-                gameGUIBase.LinkedGameObject.SetActive(false);
+            {
+
+                for(int i=0;i<gameGUIBase.LinkedGameObjects.Length;i++)
+                    gameGUIBase.LinkedGameObjects[i].SetActive(false);
+            }
 
             base.Exit();
         }

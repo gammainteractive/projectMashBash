@@ -26,6 +26,11 @@ namespace Artimech
     {
         [Header("SimMgr:")]
         [SerializeField]
+        [Tooltip("Link the game controller that does that actual tap symbol game.")]
+        aMechGmController m_GameController;
+
+        [Header("Linked Gfx Objects:")]
+        [SerializeField]
         [Tooltip("Intro Screen Text.")]
         aMechGameGUIBase m_InfoText;
         [SerializeField]
@@ -37,6 +42,14 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Button Gui Diamond.")]
         aMechGameGUIBase m_ButtonGuiDiamond;
+        [SerializeField]
+        [Tooltip("Begin popup box.")]
+        aMechGameGUIBase m_BeginInstructions;
+
+        [SerializeField]
+        [Tooltip("Begin popup box.")]
+        aMechGameGUIBase m_WatchMessage;
+
 
         [Header("Timers:")]
         [SerializeField]
@@ -45,6 +58,15 @@ namespace Artimech
         [SerializeField]
         [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
         float m_IntroMessageHoldAfterFadeIn = 1.5f;
+        [SerializeField]
+        [Tooltip("How long it takes for the start game information to come up.")]
+        float m_BeginInfoMessageTime = 0.25f;
+        [SerializeField]
+        [Tooltip("How long it takes for the start game information to go away.")]
+        float m_BeginInfoAfterMessageTime = 0.75f;
+        [SerializeField]
+        [Tooltip("From Watch to Symbol playback.")]
+        float m_WatchToShowSymbolsTime = 0.75f;
 
         [Header("Sim Audio:")]
 
@@ -79,6 +101,12 @@ namespace Artimech
 
         public Button TapToStartButton { get => m_TapToStartButton; set => m_TapToStartButton = value; }
         public bool TapToStartBool { get => m_TapToStartBool; set => m_TapToStartBool = value; }
+        public aMechGameGUIBase BeginInstructions { get => m_BeginInstructions; set => m_BeginInstructions = value; }
+        public float BeginInfoMessageTime { get => m_BeginInfoMessageTime;}
+        public float BeginInfoAfterMessageTime { get => m_BeginInfoAfterMessageTime;}
+        public aMechGameGUIBase WatchMessage { get => m_WatchMessage; set => m_WatchMessage = value; }
+        public float WatchToShowSymbolsTime { get => m_WatchToShowSymbolsTime;}
+        public aMechGmController GameController { get => m_GameController; set => m_GameController = value; }
 
         void OnClickTapToStartButton()
         {
@@ -125,6 +153,9 @@ namespace Artimech
             m_CurrentState = AddState(new simMgrInit(this.gameObject), "simMgrInit");
 
             //<ArtiMechStates>
+            AddState(new simMgrStartSymbolPlayBack(this.gameObject),"simMgrStartSymbolPlayBack");
+            AddState(new simMgrStartGameCycle(this.gameObject),"simMgrStartGameCycle");
+            AddState(new simMgrShowBeginGameInstructions(this.gameObject),"simMgrShowBeginGameInstructions");
             AddState(new simMgrStartGame(this.gameObject),"simMgrStartGame");
             AddState(new simMgrFadeInGetReady(this.gameObject),"simMgrFadeInGetReady");
             AddState(new simMgrFadeOutStartScreen(this.gameObject),"simMgrFadeOutStartScreen");

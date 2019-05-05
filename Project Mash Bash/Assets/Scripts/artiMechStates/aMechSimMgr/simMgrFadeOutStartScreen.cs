@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Fade Out Start Screen</alias>
     <comment></comment>
-    <posX>18</posX>
-    <posY>218</posY>
+    <posX>-112</posX>
+    <posY>119</posY>
     <sizeX>165</sizeX>
     <sizeY>39</sizeY>
   </State>

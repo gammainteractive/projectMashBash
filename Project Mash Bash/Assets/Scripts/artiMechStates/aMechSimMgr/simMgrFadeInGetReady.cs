@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Fade In Screen Ready</alias>
     <comment></comment>
-    <posX>227</posX>
-    <posY>38</posY>
+    <posX>221</posX>
+    <posY>-82</posY>
     <sizeX>177</sizeX>
     <sizeY>42</sizeY>
   </State>

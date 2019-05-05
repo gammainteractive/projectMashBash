@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>simMgrInitLoose</alias>
     <comment></comment>
-    <posX>105</posX>
-    <posY>375</posY>
+    <posX>681</posX>
+    <posY>415</posY>
     <sizeX>154</sizeX>
     <sizeY>48</sizeY>
   </State>

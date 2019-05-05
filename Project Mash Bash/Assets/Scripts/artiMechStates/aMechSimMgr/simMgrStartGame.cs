@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>simMgrStartGame</alias>
     <comment></comment>
-    <posX>370</posX>
-    <posY>117</posY>
+    <posX>236</posX>
+    <posY>16</posY>
     <sizeX>149</sizeX>
     <sizeY>52</sizeY>
   </State>
@@ -55,6 +55,7 @@ namespace Artimech
         public simMgrStartGame(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
+            m_ConditionalList.Add(new simMgrStartGame_To_simMgrShowBeginGameInstructions("simMgrShowBeginGameInstructions"));
         }
 
         /// <summary>

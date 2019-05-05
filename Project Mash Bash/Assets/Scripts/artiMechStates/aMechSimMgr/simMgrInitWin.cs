@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>simMgrInitWin</alias>
     <comment></comment>
-    <posX>429</posX>
-    <posY>373</posY>
+    <posX>977</posX>
+    <posY>315</posY>
     <sizeX>163</sizeX>
     <sizeY>54</sizeY>
   </State>

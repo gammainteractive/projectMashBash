@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Fade In Start Screen</alias>
     <comment></comment>
-    <posX>20</posX>
-    <posY>126</posY>
+    <posX>-110</posX>
+    <posY>198</posY>
     <sizeX>148</sizeX>
     <sizeY>42</sizeY>
   </State>

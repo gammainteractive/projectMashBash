@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>simMgrPlayGame</alias>
     <comment></comment>
-    <posX>271</posX>
-    <posY>269</posY>
+    <posX>686</posX>
+    <posY>313</posY>
     <sizeX>151</sizeX>
     <sizeY>50</sizeY>
   </State>

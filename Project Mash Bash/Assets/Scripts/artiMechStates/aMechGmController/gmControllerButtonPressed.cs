@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Button Pressed</alias>
     <comment></comment>
-    <posX>81</posX>
-    <posY>434</posY>
+    <posX>46</posX>
+    <posY>467</posY>
     <sizeX>148</sizeX>
     <sizeY>46</sizeY>
   </State>

@@ -92,6 +92,11 @@ namespace Artimech
         public SimpleHealthBar TimerLeftBar { get => m_TimerLeftBar; set => m_TimerLeftBar = value; }
         public float PerSymbolInputTimeLimit { get => m_PerSymbolInputTimeLimit; set => m_PerSymbolInputTimeLimit = value; }
 
+        public void OnButtonClick(Button button)
+        {
+
+        }
+
         new void Awake()
         {
             m_SymbolDataList = new List<SymbolData>();

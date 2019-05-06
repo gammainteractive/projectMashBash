@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Input is good</alias>
     <comment></comment>
-    <posX>15</posX>
-    <posY>321</posY>
+    <posX>25</posX>
+    <posY>338</posY>
     <sizeX>168</sizeX>
     <sizeY>50</sizeY>
   </State>

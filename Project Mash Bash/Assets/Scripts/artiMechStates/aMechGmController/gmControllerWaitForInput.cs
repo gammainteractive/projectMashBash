@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -88,6 +89,9 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            for (int i = 0; i < script.Buttons.Length; i++)
+                script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = true;
             base.Enter();
         }
 

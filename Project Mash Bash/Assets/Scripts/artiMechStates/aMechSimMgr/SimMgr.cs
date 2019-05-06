@@ -49,6 +49,9 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Begin popup box.")]
         aMechGameGUIBase m_WatchMessage;
+        [SerializeField]
+        [Tooltip("Repeat popup box.")]
+        aMechGameGUIBase m_RepeatMessage;
 
 
         [Header("Timers:")]
@@ -107,6 +110,7 @@ namespace Artimech
         public aMechGameGUIBase WatchMessage { get => m_WatchMessage; set => m_WatchMessage = value; }
         public float WatchToShowSymbolsTime { get => m_WatchToShowSymbolsTime;}
         public aMechGmController GameController { get => m_GameController; set => m_GameController = value; }
+        public aMechGameGUIBase RepeatMessage { get => m_RepeatMessage; set => m_RepeatMessage = value; }
 
         void OnClickTapToStartButton()
         {
@@ -153,6 +157,7 @@ namespace Artimech
             m_CurrentState = AddState(new simMgrInit(this.gameObject), "simMgrInit");
 
             //<ArtiMechStates>
+            AddState(new simMgrSymbolInput(this.gameObject),"simMgrSymbolInput");
             AddState(new simMgrStartSymbolPlayBack(this.gameObject),"simMgrStartSymbolPlayBack");
             AddState(new simMgrStartGameCycle(this.gameObject),"simMgrStartGameCycle");
             AddState(new simMgrShowBeginGameInstructions(this.gameObject),"simMgrShowBeginGameInstructions");

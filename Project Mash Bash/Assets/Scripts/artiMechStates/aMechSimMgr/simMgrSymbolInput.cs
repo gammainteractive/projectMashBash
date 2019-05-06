@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Start Symbol Playback</alias>
+    <alias>Symbol Input</alias>
     <comment></comment>
-    <posX>74</posX>
-    <posY>304</posY>
-    <sizeX>158</sizeX>
-    <sizeY>62</sizeY>
+    <posX>75</posX>
+    <posY>437</posY>
+    <sizeX>150</sizeX>
+    <sizeY>80</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +45,16 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class simMgrStartSymbolPlayBack : stateGameBase
+    public class simMgrSymbolInput : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrStartSymbolPlayBack(GameObject gameobject) : base(gameobject)
+        public simMgrSymbolInput(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new simMgrStartSymbolPlayBack_To_simMgrSymbolInput("simMgrSymbolInput"));
         }
 
         /// <summary>
@@ -87,7 +86,8 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            SimMgr.Inst.GameController.GetComponent<aMechGmController>().AddSymbolAndPlayGame = true;
+            SimMgr.Inst.WatchMessage.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            SimMgr.Inst.RepeatMessage.Action = aMechGameGUIBase.eActionType.kFadeIn;
             base.Enter();
         }
 

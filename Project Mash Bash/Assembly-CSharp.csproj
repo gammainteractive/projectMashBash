@@ -165,6 +165,8 @@
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrStartGameCycle.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrStartGameCycle_To_simMgrStartSymbolPlayBack.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrStartSymbolPlayBack.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrStartSymbolPlayBack_To_simMgrSymbolInput.cs" />
+    <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrSymbolInput.cs" />
     <Compile Include="Assets\Scripts\artiMechStates\aMechSimMgr\simMgrWin.cs" />
     <Compile Include="Assets\Scripts\Common\gameMgr.cs" />
     <Compile Include="Assets\Scripts\Common\statemachine\baseState.cs" />

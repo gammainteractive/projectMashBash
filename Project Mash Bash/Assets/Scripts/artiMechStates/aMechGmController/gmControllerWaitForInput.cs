@@ -102,7 +102,10 @@ namespace Artimech
                 if(script.Buttons[i]!=script.SymbolDataList[script.CurrentPuzzelIndex].ButtonPtr)
                     cb.pressedColor = new Color(1, 0, 0, 1);
                 else
-                    cb.pressedColor = new Color(script.SymbolDataList[i].Color.r, script.SymbolDataList[i].Color.g, script.SymbolDataList[i].Color.b, script.SymbolDataList[i].Color.a);
+                    cb.pressedColor = new Color(script.SymbolDataList[script.CurrentPuzzelIndex].Color.r, 
+                        script.SymbolDataList[script.CurrentPuzzelIndex].Color.g, 
+                        script.SymbolDataList[script.CurrentPuzzelIndex].Color.b, 
+                        script.SymbolDataList[script.CurrentPuzzelIndex].Color.a);
                 script.Buttons[i].colors = cb;
 
 

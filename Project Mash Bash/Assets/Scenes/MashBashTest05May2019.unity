@@ -761,7 +761,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_SymbolSound: {fileID: 833252349}
-  m_SymbolSoundPitchChange: 1.5
+  m_SymbolSoundPitchChange: 2
   m_ErrorColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &258956343
 GameObject:
@@ -1309,7 +1309,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_SymbolSound: {fileID: 833252349}
-  m_SymbolSoundPitchChange: 0.5
+  m_SymbolSoundPitchChange: 1.5
   m_ErrorColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &795709381
 GameObject:

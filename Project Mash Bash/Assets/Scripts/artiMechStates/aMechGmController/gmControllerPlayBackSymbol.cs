@@ -91,8 +91,9 @@ namespace Artimech
         {
             aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
             aMechGmController.SymbolData data = script.SymbolDataList[script.CurrentPuzzelIndex];
-            Button button = script.Buttons[data.ButtonIndexNum];
-            aMechGmSymbolButton symbolButton = button.gameObject.GetComponent<aMechGmSymbolButton>();
+            
+            //Button button = script.Buttons[data.ButtonIndexNum];
+            aMechGmSymbolButton symbolButton = data.ButtonPtr.gameObject.GetComponent<aMechGmSymbolButton>();
             symbolButton.SetPulseColor(data.Color);
 
             base.Enter();

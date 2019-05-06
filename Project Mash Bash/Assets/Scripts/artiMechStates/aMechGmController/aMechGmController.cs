@@ -29,6 +29,9 @@ namespace Artimech
         [SerializeField]
         [Tooltip("0 is mid, 1 is left and 2 is right")]
         Button[] m_Buttons;
+        [SerializeField]
+        [Tooltip("Timer bar.  Show how long input can still be used.")]
+        SimpleHealthBar m_TimerLeftBar;
 
         [Header("Puzzel Config:")]
         [SerializeField]
@@ -42,6 +45,9 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Time it takes start the input game after the show symbol section of the game.")]
         float m_AfterSymbolShowTimeLimit = 1.0f;
+        [SerializeField]
+        [Tooltip("Time it takes to time out for input.")]
+        float m_PerSymbolInputTimeLimit = 1.0f;
 
         [Header("Random:")]
         [SerializeField]
@@ -57,17 +63,18 @@ namespace Artimech
 
         public class SymbolData
         {
-            int m_ButtonIndexNum;
+            Button m_ButtonPtr;
             Color m_Color;
 
-            public SymbolData(int index, Color color)
+            public SymbolData(Button button, Color color)
             {
-                m_ButtonIndexNum = index;
+                m_ButtonPtr = button;
                 m_Color = color;
             }
 
-            public int ButtonIndexNum { get => m_ButtonIndexNum; }
+           
             public Color Color { get => m_Color; }
+            public Button ButtonPtr { get => m_ButtonPtr;}
         }
 
         IList<SymbolData> m_SymbolDataList;
@@ -82,6 +89,8 @@ namespace Artimech
         public int CurrentPuzzelIndex { get => m_CurrentPuzzelIndex; set => m_CurrentPuzzelIndex = value; }
         public float IncrementColorTimeLimit { get => m_IncrementColorTimeLimit; }
         public float AfterSymbolShowTimeLimit { get => m_AfterSymbolShowTimeLimit; }
+        public SimpleHealthBar TimerLeftBar { get => m_TimerLeftBar; set => m_TimerLeftBar = value; }
+        public float PerSymbolInputTimeLimit { get => m_PerSymbolInputTimeLimit; set => m_PerSymbolInputTimeLimit = value; }
 
         new void Awake()
         {

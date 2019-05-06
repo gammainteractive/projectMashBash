@@ -67,7 +67,7 @@ namespace Artimech
             aMechGmController script = this.StateGameObject.GetComponent<aMechGmController>();            
             int randButtonIndex = Random.Range(0,script.Buttons.Length);
             int randColorIndex = Random.Range(0, script.PuzzelColors.Length);
-            script.SymbolDataList.Add(new aMechGmController.SymbolData(randButtonIndex, script.PuzzelColors[randColorIndex]));
+            script.SymbolDataList.Add(new aMechGmController.SymbolData(script.Buttons[randButtonIndex], script.PuzzelColors[randColorIndex]));
             
             base.Update();
         }

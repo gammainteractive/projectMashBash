@@ -34,8 +34,8 @@ using UnityEngine.UI;
   <State>
     <alias>Turn Off All Button Input</alias>
     <comment></comment>
-    <posX>259</posX>
-    <posY>152</posY>
+    <posX>462</posX>
+    <posY>38</posY>
     <sizeX>185</sizeX>
     <sizeY>46</sizeY>
   </State>

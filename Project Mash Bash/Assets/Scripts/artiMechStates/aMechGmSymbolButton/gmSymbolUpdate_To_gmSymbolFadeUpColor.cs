@@ -52,17 +52,12 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            string strOut = null;
+            stateGameBase gameState = (stateGameBase)state;
+            aMechGmSymbolButton script = gameState.StateGameObject.GetComponent<aMechGmSymbolButton>();
+            if (script.PulseColorBool)
+                return m_ChangeStateName;
 
-#if ARTIMECH_THIS_SHOULD_NEVER_BE_TRUE_BUT_IS_AN_EXAMPLE_OF_A_CONDITION_BEING_TRUE
-            This is an example of setting a contition to true if the gameobject
-            falls below a certain height ingame.
-            if (state.m_GameObject.transform.position.y <= 1000)
-                strOut = m_ChangeStateName;
-#endif
-
-
-            return strOut;
+            return null;
         }
     }
 }

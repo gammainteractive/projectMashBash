@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Play Back Symbols</alias>
+    <alias>Increment Symbol</alias>
     <comment></comment>
-    <posX>354</posX>
-    <posY>519</posY>
-    <sizeX>153</sizeX>
-    <sizeY>50</sizeY>
+    <posX>58</posX>
+    <posY>528</posY>
+    <sizeX>162</sizeX>
+    <sizeY>45</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gmControllerPlayBackSymbols : stateGameBase
+    public class gmControllerIncrementSymbol : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerPlayBackSymbols(GameObject gameobject) : base (gameobject)
+        public gmControllerIncrementSymbol(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerPlayBackSymbols_To_gmControllerWaitSymbolInput("gmControllerWaitSymbolInput"));
+            m_ConditionalList.Add(new gmControllerIncrementSymbol_To_gmControllerPlayBackSymbol("gmControllerPlayBackSymbol"));
         }
 
         /// <summary>
@@ -87,6 +87,8 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController controller = this.StateGameObject.GetComponent<aMechGmController>();
+            controller.CurrentPuzzelIndex += 1;
             base.Enter();
         }
 

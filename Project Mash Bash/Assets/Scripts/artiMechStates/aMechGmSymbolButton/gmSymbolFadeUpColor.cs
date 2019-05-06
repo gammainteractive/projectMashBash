@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -31,7 +32,7 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>gmSymbolFadeUpColor</alias>
+    <alias>Fade In</alias>
     <comment></comment>
     <posX>52</posX>
     <posY>269</posY>
@@ -47,7 +48,7 @@ namespace Artimech
 {
     public class gmSymbolFadeUpColor : stateGameBase
     {
-
+        float m_StartPitch;
         /// <summary>
         /// State constructor.
         /// </summary>
@@ -63,6 +64,23 @@ namespace Artimech
         /// </summary>
         public override void Update()
         {
+            aMechGmSymbolButton script = StateGameObject.GetComponent<aMechGmSymbolButton>();
+            //Button button = StateGameObject.GetComponent<Button>();
+            Image image = StateGameObject.GetComponent<Image>();
+
+            float coef = script.FadeInCurve.Evaluate(StateTime);
+
+            Vector4 startColor = new Vector4(script.ImageStartColor.r, script.ImageStartColor.g, script.ImageStartColor.b, script.ImageStartColor.a);
+            Vector4 endColor = new Vector4(script.PulseColor.r, script.PulseColor.g, script.PulseColor.b, script.PulseColor.a);
+
+            Vector4 fadeInColor = Vector4.Lerp(startColor, endColor, coef);
+
+/*            ColorBlock cb = button.colors;
+            cb.normalColor = new Color(fadeInColor.x, fadeInColor.y, fadeInColor.z, fadeInColor.w); ;
+            button.colors = cb;*/
+
+            image.color = new Color(fadeInColor.x, fadeInColor.y, fadeInColor.z, fadeInColor.w);
+
             base.Update();
         }
 
@@ -87,6 +105,12 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmSymbolButton script = this.StateGameObject.GetComponent<aMechGmSymbolButton>();
+            m_StartPitch = script.SymbolSound.pitch;
+            script.PulseColorBool = false;
+            script.SymbolSound.pitch = script.SymbolSoundPitchChange;
+            script.SymbolSound.Play();
+            //Button button = StateGameObject.GetComponent<Button>();
             base.Enter();
         }
 
@@ -95,6 +119,8 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
+            aMechGmSymbolButton script = this.StateGameObject.GetComponent<aMechGmSymbolButton>();
+            script.SymbolSound.pitch = m_StartPitch;
             base.Exit();
         }
     }

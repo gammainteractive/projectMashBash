@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmTurnOffAllButtonInput_To_gmControllerWait : stateConditionalBase
+    public class gmControllerAddSymbol_To_gmControllerPlayBackSymbol : stateConditionalBase
     {
         
-        public gmTurnOffAllButtonInput_To_gmControllerWait(string changeStateName) : base (changeStateName)
+        public gmControllerAddSymbol_To_gmControllerPlayBackSymbol(string changeStateName) : base (changeStateName)
         {
             
         }

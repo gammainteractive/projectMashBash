@@ -52,7 +52,7 @@ namespace Artimech
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public simMgrStartSymbolPlayBack(GameObject gameobject) : base (gameobject)
+        public simMgrStartSymbolPlayBack(GameObject gameobject) : base(gameobject)
         {
             //<ArtiMechConditions>
         }
@@ -86,6 +86,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            SimMgr.Inst.GameController.GetComponent<aMechGmController>().AddSymbolAndPlayGame = true;
             base.Enter();
         }
 

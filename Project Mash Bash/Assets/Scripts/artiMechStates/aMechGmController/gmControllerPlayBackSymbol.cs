@@ -32,12 +32,12 @@ using UnityEngine.UI;
 
 <stateMetaData>
   <State>
-    <alias>Turn Off Side Button Input</alias>
+    <alias>Play Back Symbol</alias>
     <comment></comment>
-    <posX>217</posX>
-    <posY>38</posY>
-    <sizeX>184</sizeX>
-    <sizeY>48</sizeY>
+    <posX>553</posX>
+    <posY>532</posY>
+    <sizeX>132</sizeX>
+    <sizeY>37</sizeY>
   </State>
 </stateMetaData>
 
@@ -46,17 +46,18 @@ using UnityEngine.UI;
 #endregion
 namespace Artimech
 {
-    public class gmControllerTurnOffSideButtonInput : stateGameBase
+    public class gmControllerPlayBackSymbol : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerTurnOffSideButtonInput(GameObject gameobject) : base (gameobject)
+        public gmControllerPlayBackSymbol(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerTurnOffSideButtonInput_To_gmTurnOffAllButtonInput("gmTurnOffAllButtonInput"));
+            m_ConditionalList.Add(new gmControllerPlayBackSymbol_To_gmControllerWaitForInput("gmControllerWaitForInput"));
+            m_ConditionalList.Add(new gmControllerPlayBackSymbol_To_gmControllerIncrementSymbol("gmControllerIncrementSymbol"));
         }
 
         /// <summary>
@@ -89,9 +90,11 @@ namespace Artimech
         public override void Enter()
         {
             aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
-            for (int i = 1; i < script.Buttons.Length; i++)
-                script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = false;
-                //script.Buttons[i].enabled = false;
+            aMechGmController.SymbolData data = script.SymbolDataList[script.CurrentPuzzelIndex];
+            Button button = script.Buttons[data.ButtonIndexNum];
+            aMechGmSymbolButton symbolButton = button.gameObject.GetComponent<aMechGmSymbolButton>();
+            symbolButton.SetPulseColor(data.Color);
+
             base.Enter();
         }
 

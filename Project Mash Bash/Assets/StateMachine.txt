@@ -1,1 +1,1 @@
-aMechGmController,GmController
+aMechGmSymbolButton,ButtonDiamond

@@ -29,20 +29,20 @@ namespace Artimech
 {
     public class gmControllerWait_To_gmControllerAddSymbol : stateConditionalBase
     {
-        
-        public gmControllerWait_To_gmControllerAddSymbol(string changeStateName) : base (changeStateName)
+
+        public gmControllerWait_To_gmControllerAddSymbol(string changeStateName) : base(changeStateName)
         {
-            
+
         }
 
         public override void Enter(baseState state)
         {
-            
+
         }
 
         public override void Exit(baseState state)
         {
-            
+
         }
 
         /// <summary>
@@ -52,17 +52,11 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            string strOut = null;
+            stateGameBase gameBase = (stateGameBase)state;
+            if(gameBase.StateGameObject.GetComponent<aMechGmController>().AddSymbolAndPlayGame)
+                return m_ChangeStateName;
 
-#if ARTIMECH_THIS_SHOULD_NEVER_BE_TRUE_BUT_IS_AN_EXAMPLE_OF_A_CONDITION_BEING_TRUE
-            This is an example of setting a contition to true if the gameobject
-            falls below a certain height ingame.
-            if (state.m_GameObject.transform.position.y <= 1000)
-                strOut = m_ChangeStateName;
-#endif
-
-
-            return strOut;
+            return null;
         }
     }
 }

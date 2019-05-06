@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Update</alias>
     <comment></comment>
-    <posX>269</posX>
-    <posY>272</posY>
+    <posX>480</posX>
+    <posY>131</posY>
     <sizeX>158</sizeX>
     <sizeY>45</sizeY>
   </State>
@@ -87,6 +87,7 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            StateGameObject.GetComponent<aMechGmController>().AddSymbolAndPlayGame = false;
             base.Enter();
         }
 

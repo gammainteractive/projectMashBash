@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Input Sequench Failure</alias>
     <comment></comment>
-    <posX>24</posX>
-    <posY>389</posY>
+    <posX>248</posX>
+    <posY>218</posY>
     <sizeX>162</sizeX>
     <sizeY>53</sizeY>
   </State>

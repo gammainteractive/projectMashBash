@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmControllerWaitSymbolInput_To_gmControllerSuccessInput : stateConditionalBase
+    public class gmControllerInputIsGood_To_gmControllerSuccessInput : stateConditionalBase
     {
         
-        public gmControllerWaitSymbolInput_To_gmControllerSuccessInput(string changeStateName) : base (changeStateName)
+        public gmControllerInputIsGood_To_gmControllerSuccessInput(string changeStateName) : base (changeStateName)
         {
             
         }

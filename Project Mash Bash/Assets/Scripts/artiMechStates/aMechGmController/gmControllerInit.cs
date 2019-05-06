@@ -87,6 +87,11 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = this.StateGameObject.GetComponent<aMechGmController>();
+            if (script.RandomSeed)
+                Random.InitState(System.Environment.TickCount);
+            else
+                Random.InitState(script.SeedNumForRandom);
             base.Enter();
         }
 

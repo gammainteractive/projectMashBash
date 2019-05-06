@@ -24,13 +24,42 @@ namespace Artimech
 {
     public class aMechGmSymbolButton : stateMachineGame
     {
-        [Header("SimMgr:")]
+        [Header("Symbol Tuning Config:")]
+
+        [SerializeField]
+        [Tooltip("Fade the color in curve.")]
+        AnimationCurve m_FadeInCurve;
+        [SerializeField]
+        [Tooltip("Fade the color out curve.")]
+        AnimationCurve m_FadeOutCurve;
+
+        [SerializeField]
+        [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
+        AudioSource m_SymbolSound;
+        [SerializeField]
+        [Tooltip("How long to wait till the intro message gets faded out after fade in starts.")]
+        float m_SymbolSoundPitchChange = 1.0f;
+
         [SerializeField]
         [Tooltip("Error Color")]
         Color m_ErrorColor;
 
 
         Color m_StartColor;
+        Color m_ImageStartColor;
+        Color m_PulseColor;
+        bool m_PulseColorBool;
+
+        public bool PulseColorBool { get => m_PulseColorBool; set => m_PulseColorBool = value; }
+        public AnimationCurve FadeOutCurve { get => m_FadeOutCurve; }
+        public AnimationCurve FadeInCurve { get => m_FadeInCurve; }
+        public Color StartColor { get => m_StartColor; set => m_StartColor = value; }
+        public Color PulseColor { get => m_PulseColor; }
+        public Color ImageStartColor { get => m_ImageStartColor; }
+        public AudioSource SymbolSound { get => m_SymbolSound; set => m_SymbolSound = value; }
+        public float SymbolSoundPitchChange { get => m_SymbolSoundPitchChange;}
+
+        public void SetPulseColor(Color colorToPulse) { m_PulseColor = colorToPulse; PulseColorBool = true; }
 
         new void Awake()
         {
@@ -41,7 +70,8 @@ namespace Artimech
         // Use this for initialization
         new void Start()
         {
-            m_StartColor = gameObject.GetComponent<Button>().colors.normalColor;
+            StartColor = gameObject.GetComponent<Button>().colors.normalColor;
+            m_ImageStartColor = gameObject.GetComponent<Image>().color;
             base.Start();
         }
 
@@ -65,11 +95,11 @@ namespace Artimech
             m_CurrentState = AddState(new gmSymbolInit(this.gameObject), "gmSymbolInit");
 
             //<ArtiMechStates>
-            AddState(new gmSymbolErrorStrobe(this.gameObject),"gmSymbolErrorStrobe");
-            AddState(new gmSymbolError(this.gameObject),"gmSymbolError");
-            AddState(new gmSymbolFadeDownColor(this.gameObject),"gmSymbolFadeDownColor");
-            AddState(new gmSymbolFadeUpColor(this.gameObject),"gmSymbolFadeUpColor");
-            AddState(new gmSymbolUpdate(this.gameObject),"gmSymbolUpdate");
+            AddState(new gmSymbolErrorStrobe(this.gameObject), "gmSymbolErrorStrobe");
+            AddState(new gmSymbolError(this.gameObject), "gmSymbolError");
+            AddState(new gmSymbolFadeDownColor(this.gameObject), "gmSymbolFadeDownColor");
+            AddState(new gmSymbolFadeUpColor(this.gameObject), "gmSymbolFadeUpColor");
+            AddState(new gmSymbolUpdate(this.gameObject), "gmSymbolUpdate");
 
         }
     }

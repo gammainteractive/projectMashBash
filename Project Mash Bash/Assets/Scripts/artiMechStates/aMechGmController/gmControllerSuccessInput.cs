@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Input Sequence Success</alias>
     <comment></comment>
-    <posX>259</posX>
-    <posY>388</posY>
+    <posX>8</posX>
+    <posY>155</posY>
     <sizeX>180</sizeX>
     <sizeY>50</sizeY>
   </State>

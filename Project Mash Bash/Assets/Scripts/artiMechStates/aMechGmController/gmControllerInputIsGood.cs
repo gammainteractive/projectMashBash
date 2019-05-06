@@ -19,7 +19,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -32,12 +31,12 @@ using UnityEngine.UI;
 
 <stateMetaData>
   <State>
-    <alias>Turn Off Side Button Input</alias>
+    <alias>Input is good</alias>
     <comment></comment>
-    <posX>217</posX>
-    <posY>38</posY>
-    <sizeX>184</sizeX>
-    <sizeY>48</sizeY>
+    <posX>15</posX>
+    <posY>321</posY>
+    <sizeX>168</sizeX>
+    <sizeY>50</sizeY>
   </State>
 </stateMetaData>
 
@@ -46,17 +45,18 @@ using UnityEngine.UI;
 #endregion
 namespace Artimech
 {
-    public class gmControllerTurnOffSideButtonInput : stateGameBase
+    public class gmControllerInputIsGood : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerTurnOffSideButtonInput(GameObject gameobject) : base (gameobject)
+        public gmControllerInputIsGood(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerTurnOffSideButtonInput_To_gmTurnOffAllButtonInput("gmTurnOffAllButtonInput"));
+            m_ConditionalList.Add(new gmControllerInputIsGood_To_gmControllerSuccessInput("gmControllerSuccessInput"));
+            m_ConditionalList.Add(new gmControllerInputIsGood_To_gmControllerWaitForInput("gmControllerWaitForInput"));
         }
 
         /// <summary>
@@ -88,10 +88,6 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
-            for (int i = 1; i < script.Buttons.Length; i++)
-                script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = false;
-                //script.Buttons[i].enabled = false;
             base.Enter();
         }
 

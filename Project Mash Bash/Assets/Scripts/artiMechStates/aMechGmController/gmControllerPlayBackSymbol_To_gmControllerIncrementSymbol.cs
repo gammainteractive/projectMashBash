@@ -27,22 +27,22 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmTurnOffAllButtonInput_To_gmControllerWait : stateConditionalBase
+    public class gmControllerPlayBackSymbol_To_gmControllerIncrementSymbol : stateConditionalBase
     {
-        
-        public gmTurnOffAllButtonInput_To_gmControllerWait(string changeStateName) : base (changeStateName)
+
+        public gmControllerPlayBackSymbol_To_gmControllerIncrementSymbol(string changeStateName) : base(changeStateName)
         {
-            
+
         }
 
         public override void Enter(baseState state)
         {
-            
+
         }
 
         public override void Exit(baseState state)
         {
-            
+
         }
 
         /// <summary>
@@ -52,7 +52,11 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            return m_ChangeStateName;
+            stateGameBase gameBase = (stateGameBase)state;
+            aMechGmController controller = gameBase.StateGameObject.GetComponent<aMechGmController>();
+            if (gameBase.StateTime >= controller.IncrementColorTimeLimit && controller.SymbolDataList.Count>controller.CurrentPuzzelIndex+1)
+                return m_ChangeStateName;
+            return null;
         }
     }
 }

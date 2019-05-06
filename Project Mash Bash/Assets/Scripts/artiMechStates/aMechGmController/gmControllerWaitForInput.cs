@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Update and Check Input</alias>
+    <alias>Wait For Input</alias>
     <comment></comment>
-    <posX>64</posX>
-    <posY>522</posY>
-    <sizeX>168</sizeX>
-    <sizeY>50</sizeY>
+    <posX>361</posX>
+    <posY>464</posY>
+    <sizeX>142</sizeX>
+    <sizeY>42</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,18 +45,18 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gmControllerWaitSymbolInput : stateGameBase
+    public class gmControllerWaitForInput : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerWaitSymbolInput(GameObject gameobject) : base (gameobject)
+        public gmControllerWaitForInput(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerWaitSymbolInput_To_gmControllerSuccessInput("gmControllerSuccessInput"));
-            m_ConditionalList.Add(new gmControllerWaitSymbolInput_To_gmControllerFailedInput("gmControllerFailedInput"));
+            m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerInputTimeOut("gmControllerInputTimeOut"));
+            m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerButtonPressed("gmControllerButtonPressed"));
         }
 
         /// <summary>

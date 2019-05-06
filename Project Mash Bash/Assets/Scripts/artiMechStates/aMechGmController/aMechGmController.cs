@@ -19,29 +19,73 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Artimech
 {
     public class aMechGmController : stateMachineGame
     {
-        [Header("aMechGmController:")]
+        [Header("Control Links:")]
         [SerializeField]
         [Tooltip("0 is mid, 1 is left and 2 is right")]
         Button[] m_Buttons;
+
+        [Header("Puzzel Config:")]
         [SerializeField]
         [Tooltip("Puzzel Colors")]
         Color[] m_PuzzelColors;
+
+        [Header("Timer Configs:")]
         [SerializeField]
-        [Tooltip("Puzzel Colors")]
-        Color m_ErrorColor;
+        [Tooltip("Time it takes to cycle a new display color and button.")]
+        float m_IncrementColorTimeLimit = 1.5f;
+        [SerializeField]
+        [Tooltip("Time it takes start the input game after the show symbol section of the game.")]
+        float m_AfterSymbolShowTimeLimit = 1.0f;
+
+        [Header("Random:")]
+        [SerializeField]
+        [Tooltip("Random Seed")]
+        bool m_RandomSeed;
+        [SerializeField]
+        [Tooltip("Random Seed Num")]
+        int m_SeedNumForRandom = 42;
 
         bool m_AllButtonsOff = false;
+        bool m_AddSymbolAndPlayGame = false;
+        int m_CurrentPuzzelIndex = 0;
+
+        public class SymbolData
+        {
+            int m_ButtonIndexNum;
+            Color m_Color;
+
+            public SymbolData(int index, Color color)
+            {
+                m_ButtonIndexNum = index;
+                m_Color = color;
+            }
+
+            public int ButtonIndexNum { get => m_ButtonIndexNum; }
+            public Color Color { get => m_Color; }
+        }
+
+        IList<SymbolData> m_SymbolDataList;
 
         public Button[] Buttons { get => m_Buttons; set => m_Buttons = value; }
         public bool AllButtonsOff { get => m_AllButtonsOff; set => m_AllButtonsOff = value; }
+        public bool AddSymbolAndPlayGame { get => m_AddSymbolAndPlayGame; set => m_AddSymbolAndPlayGame = value; }
+        public IList<SymbolData> SymbolDataList { get => m_SymbolDataList; set => m_SymbolDataList = value; }
+        public bool RandomSeed { get => m_RandomSeed; }
+        public int SeedNumForRandom { get => m_SeedNumForRandom; }
+        public Color[] PuzzelColors { get => m_PuzzelColors; }
+        public int CurrentPuzzelIndex { get => m_CurrentPuzzelIndex; set => m_CurrentPuzzelIndex = value; }
+        public float IncrementColorTimeLimit { get => m_IncrementColorTimeLimit; }
+        public float AfterSymbolShowTimeLimit { get => m_AfterSymbolShowTimeLimit; }
 
         new void Awake()
         {
+            m_SymbolDataList = new List<SymbolData>();
             base.Awake();
             CreateStates();
         }
@@ -72,14 +116,18 @@ namespace Artimech
             m_CurrentState = AddState(new gmControllerInit(this.gameObject), "gmControllerInit");
 
             //<ArtiMechStates>
-            AddState(new gmTurnOffAllButtonInput(this.gameObject),"gmTurnOffAllButtonInput");
-            AddState(new gmControllerTurnOffSideButtonInput(this.gameObject),"gmControllerTurnOffSideButtonInput");
-            AddState(new gmControllerSuccessInput(this.gameObject),"gmControllerSuccessInput");
-            AddState(new gmControllerFailedInput(this.gameObject),"gmControllerFailedInput");
-            AddState(new gmControllerWaitSymbolInput(this.gameObject),"gmControllerWaitSymbolInput");
-            AddState(new gmControllerAddSymbol(this.gameObject),"gmControllerAddSymbol");
-            AddState(new gmControllerPlayBackSymbols(this.gameObject),"gmControllerPlayBackSymbols");
-            AddState(new gmControllerWait(this.gameObject),"gmControllerWait");
+            AddState(new gmControllerInputTimeOut(this.gameObject), "gmControllerInputTimeOut");
+            AddState(new gmControllerButtonPressed(this.gameObject), "gmControllerButtonPressed");
+            AddState(new gmControllerWaitForInput(this.gameObject), "gmControllerWaitForInput");
+            AddState(new gmControllerIncrementSymbol(this.gameObject), "gmControllerIncrementSymbol");
+            AddState(new gmTurnOffAllButtonInput(this.gameObject), "gmTurnOffAllButtonInput");
+            AddState(new gmControllerTurnOffSideButtonInput(this.gameObject), "gmControllerTurnOffSideButtonInput");
+            AddState(new gmControllerSuccessInput(this.gameObject), "gmControllerSuccessInput");
+            AddState(new gmControllerFailedInput(this.gameObject), "gmControllerFailedInput");
+            AddState(new gmControllerInputIsGood(this.gameObject), "gmControllerInputIsGood");
+            AddState(new gmControllerAddSymbol(this.gameObject), "gmControllerAddSymbol");
+            AddState(new gmControllerPlayBackSymbol(this.gameObject), "gmControllerPlayBackSymbol");
+            AddState(new gmControllerWait(this.gameObject), "gmControllerWait");
 
         }
     }

@@ -33,10 +33,10 @@ using System.Collections.Generic;
   <State>
     <alias>Add Symbol</alias>
     <comment></comment>
-    <posX>524</posX>
-    <posY>385</posY>
-    <sizeX>126</sizeX>
-    <sizeY>54</sizeY>
+    <posX>506</posX>
+    <posY>271</posY>
+    <sizeX>127</sizeX>
+    <sizeY>39</sizeY>
   </State>
 </stateMetaData>
 
@@ -55,7 +55,7 @@ namespace Artimech
         public gmControllerAddSymbol(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerAddSymbol_To_gmControllerPlayBackSymbols("gmControllerPlayBackSymbols"));
+            m_ConditionalList.Add(new gmControllerAddSymbol_To_gmControllerPlayBackSymbol("gmControllerPlayBackSymbol"));
         }
 
         /// <summary>
@@ -63,6 +63,12 @@ namespace Artimech
         /// </summary>
         public override void Update()
         {
+            
+            aMechGmController script = this.StateGameObject.GetComponent<aMechGmController>();            
+            int randButtonIndex = Random.Range(0,script.Buttons.Length-1);
+            int randColorIndex = Random.Range(0, script.PuzzelColors.Length - 1);
+            script.SymbolDataList.Add(new aMechGmController.SymbolData(randButtonIndex, script.PuzzelColors[randColorIndex]));
+            
             base.Update();
         }
 

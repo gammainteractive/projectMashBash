@@ -91,8 +91,12 @@ namespace Artimech
             aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
             script.WinDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
             script.TimerBar.Action = aMechGameGUIBase.eActionType.kFadeOut;
-            int index = Mathf.Clamp(script.CurrentPuzzelIndex-1 ,0, (int)(script.WinMessageStrings.Length)-1);
+            int index = Mathf.Clamp(script.SymbolDataList.Count-1 ,0, (int)(script.WinMessageStrings.Length)-1);
             script.WinDialog.GetComponentInChildren<Text>().text = script.WinMessageStrings[index];
+
+            if (index ==3 || index == 5 || index >= 7)
+                script.FighterPlayer.GetComponentInChildren<Animator>().SetTrigger("PunchOne");
+
             base.Enter();
         }
 

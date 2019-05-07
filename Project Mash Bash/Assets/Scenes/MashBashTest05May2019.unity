@@ -1152,6 +1152,7 @@ MonoBehaviour:
   m_RepeatDialog: {fileID: 1295667948}
   m_WatchDialog: {fileID: 1228048692}
   m_TimerBar: {fileID: 938238249}
+  m_FighterPlayer: {fileID: 1611061371}
   m_PuzzelColors:
   - {r: 0.030037642, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.96448624, b: 0, a: 1}

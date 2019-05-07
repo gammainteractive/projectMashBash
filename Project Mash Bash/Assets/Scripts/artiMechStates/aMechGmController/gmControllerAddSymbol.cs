@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Add Symbol</alias>
     <comment></comment>
-    <posX>506</posX>
-    <posY>271</posY>
+    <posX>613</posX>
+    <posY>222</posY>
     <sizeX>127</sizeX>
     <sizeY>39</sizeY>
   </State>
@@ -64,11 +64,7 @@ namespace Artimech
         public override void Update()
         {
             
-            aMechGmController script = this.StateGameObject.GetComponent<aMechGmController>();            
-            int randButtonIndex = Random.Range(0,script.Buttons.Length);
-            int randColorIndex = Random.Range(0, script.PuzzelColors.Length);
-            script.SymbolDataList.Add(new aMechGmController.SymbolData(script.Buttons[randButtonIndex], script.PuzzelColors[randColorIndex]));
-            
+
             base.Update();
         }
 
@@ -93,6 +89,11 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = this.StateGameObject.GetComponent<aMechGmController>();
+            int randButtonIndex = Random.Range(0, script.Buttons.Length);
+            int randColorIndex = Random.Range(0, script.PuzzelColors.Length);
+            script.SymbolDataList.Add(new aMechGmController.SymbolData(script.Buttons[randButtonIndex], script.PuzzelColors[randColorIndex]));
+            script.CurrentPuzzelIndex = 0;
             base.Enter();
         }
 

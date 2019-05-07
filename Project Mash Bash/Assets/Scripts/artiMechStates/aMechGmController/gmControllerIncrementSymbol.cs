@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Increment Symbol</alias>
     <comment></comment>
-    <posX>44</posX>
-    <posY>542</posY>
+    <posX>563</posX>
+    <posY>549</posY>
     <sizeX>162</sizeX>
     <sizeY>45</sizeY>
   </State>

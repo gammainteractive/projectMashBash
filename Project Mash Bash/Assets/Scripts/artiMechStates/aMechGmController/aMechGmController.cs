@@ -32,11 +32,35 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Timer bar.  Show how long input can still be used.")]
         SimpleHealthBar m_TimerLeftBar;
+        [SerializeField]
+        [Tooltip("Win Input Secquence Dialog.")]
+        aMechGameGUIBase m_WinDialog;
+        [SerializeField]
+        [Tooltip("Loose Input Secquence Dialog.")]
+        aMechGameGUIBase m_LooseDialog;
+        [SerializeField]
+        [Tooltip("Error Sound.")]
+        AudioSource m_ErrorSound;
+        [SerializeField]
+        [Tooltip("Repeat Dialog.")]
+        aMechGameGUIBase m_RepeatDialog;
+        [SerializeField]
+        [Tooltip("Watch Dialog.")]
+        aMechGameGUIBase m_WatchDialog;
+        [SerializeField]
+        [Tooltip("Time bar.")]
+        aMechGameGUIBase m_TimerBar;
+        [SerializeField]
+        [Tooltip("Player Fighter.")]
+        aMechFighter m_FighterPlayer;
 
         [Header("Puzzel Config:")]
         [SerializeField]
         [Tooltip("Puzzel Colors")]
         Color[] m_PuzzelColors;
+        [SerializeField]
+        [Tooltip("Number of sequences in a row to win.")]
+        int m_PuzzelWinLimit;
 
         [Header("Timer Configs:")]
         [SerializeField]
@@ -48,6 +72,12 @@ namespace Artimech
         [SerializeField]
         [Tooltip("Time it takes to time out for input.")]
         float m_PerSymbolInputTimeLimit = 1.0f;
+        [SerializeField]
+        [Tooltip("Time it takes after a successful input.")]
+        float m_PostGoodTimeLimit = 1.0f;
+        [SerializeField]
+        [Tooltip("Time it takes after a successful input.")]
+        float m_PostErrorTimeLimit = 1.0f;
 
         [Header("Random:")]
         [SerializeField]
@@ -57,9 +87,18 @@ namespace Artimech
         [Tooltip("Random Seed Num")]
         int m_SeedNumForRandom = 42;
 
+        [Header("Dialog Text:")]
+        [SerializeField]
+        [Tooltip("Fill in for success message")]
+        string[] m_WinMessageStrings;
+
+
         bool m_AllButtonsOff = false;
         bool m_AddSymbolAndPlayGame = false;
         int m_CurrentPuzzelIndex = 0;
+        bool m_OnClickGoodBool = false;
+        bool m_OnClickBadBool = false;
+        Button m_ButtonClicked;
 
         public class SymbolData
         {
@@ -91,9 +130,31 @@ namespace Artimech
         public float AfterSymbolShowTimeLimit { get => m_AfterSymbolShowTimeLimit; }
         public SimpleHealthBar TimerLeftBar { get => m_TimerLeftBar; set => m_TimerLeftBar = value; }
         public float PerSymbolInputTimeLimit { get => m_PerSymbolInputTimeLimit; set => m_PerSymbolInputTimeLimit = value; }
+        public bool OnClickGoodBool { get => m_OnClickGoodBool; set => m_OnClickGoodBool = value; }
+        public bool OnClickBadBool { get => m_OnClickBadBool; set => m_OnClickBadBool = value; }
+        public Button ButtonClicked { get => m_ButtonClicked;}
+        public int PuzzelWinLimit { get => m_PuzzelWinLimit;}
+        public aMechGameGUIBase WinDialog { get => m_WinDialog; set => m_WinDialog = value; }
+        public aMechGameGUIBase LooseDialog { get => m_LooseDialog; set => m_LooseDialog = value; }
+        public AudioSource ErrorSound { get => m_ErrorSound; set => m_ErrorSound = value; }
+        public float PostGoodTimeLimit { get => m_PostGoodTimeLimit; }
+        public float PostErrorTimeLimit { get => m_PostErrorTimeLimit;}
+        public aMechGameGUIBase RepeatDialog { get => m_RepeatDialog; set => m_RepeatDialog = value; }
+        public aMechGameGUIBase WatchDialog { get => m_WatchDialog; set => m_WatchDialog = value; }
+        public aMechGameGUIBase TimerBar { get => m_TimerBar; set => m_TimerBar = value; }
+        public string[] WinMessageStrings { get => m_WinMessageStrings; }
+        public aMechFighter FighterPlayer { get => m_FighterPlayer; set => m_FighterPlayer = value; }
 
         public void OnButtonClick(Button button)
         {
+            if (CurrentPuzzelIndex >= 0 && CurrentPuzzelIndex<SymbolDataList.Count)
+            {
+                if (button == SymbolDataList[CurrentPuzzelIndex].ButtonPtr)
+                    OnClickGoodBool = true;
+                else
+                    OnClickBadBool = true;
+                m_ButtonClicked = button;
+            }
 
         }
 
@@ -137,8 +198,9 @@ namespace Artimech
             m_CurrentState = AddState(new gmControllerInit(this.gameObject), "gmControllerInit");
 
             //<ArtiMechStates>
+            AddState(new gmControllerResetPuzzelIndex(this.gameObject),"gmControllerResetPuzzelIndex");
+            AddState(new gmControllerInputBad(this.gameObject),"gmControllerInputBad");
             AddState(new gmControllerInputTimeOut(this.gameObject), "gmControllerInputTimeOut");
-            AddState(new gmControllerButtonPressed(this.gameObject), "gmControllerButtonPressed");
             AddState(new gmControllerWaitForInput(this.gameObject), "gmControllerWaitForInput");
             AddState(new gmControllerIncrementSymbol(this.gameObject), "gmControllerIncrementSymbol");
             AddState(new gmTurnOffAllButtonInput(this.gameObject), "gmTurnOffAllButtonInput");

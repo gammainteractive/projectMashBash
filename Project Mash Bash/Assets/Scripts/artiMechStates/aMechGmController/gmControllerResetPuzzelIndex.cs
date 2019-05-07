@@ -31,12 +31,12 @@ using System.Collections.Generic;
 
 <stateMetaData>
   <State>
-    <alias>Button Pressed</alias>
+    <alias>Reset Puzzel Index</alias>
     <comment></comment>
-    <posX>46</posX>
-    <posY>467</posY>
-    <sizeX>148</sizeX>
-    <sizeY>46</sizeY>
+    <posX>460</posX>
+    <posY>450</posY>
+    <sizeX>142</sizeX>
+    <sizeY>49</sizeY>
   </State>
 </stateMetaData>
 
@@ -45,17 +45,17 @@ using System.Collections.Generic;
 #endregion
 namespace Artimech
 {
-    public class gmControllerButtonPressed : stateGameBase
+    public class gmControllerResetPuzzelIndex : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerButtonPressed(GameObject gameobject) : base (gameobject)
+        public gmControllerResetPuzzelIndex(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerButtonPressed_To_gmControllerInputIsGood("gmControllerInputIsGood"));
+            m_ConditionalList.Add(new gmControllerResetPuzzelIndex_To_gmControllerWaitForInput("gmControllerWaitForInput"));
         }
 
         /// <summary>
@@ -87,6 +87,8 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            script.CurrentPuzzelIndex = 0;
             base.Enter();
         }
 

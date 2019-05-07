@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -55,7 +56,7 @@ namespace Artimech
         public gmControllerSuccessInput(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerSuccessInput_To_gmControllerWait("gmControllerWait"));
+            m_ConditionalList.Add(new gmControllerSuccessInput_To_gmControllerAddSymbol("gmControllerAddSymbol"));
         }
 
         /// <summary>
@@ -87,6 +88,11 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            script.WinDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            script.TimerBar.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            int index = Mathf.Clamp(script.CurrentPuzzelIndex-1 ,0, (int)(script.WinMessageStrings.Length)-1);
+            script.WinDialog.GetComponentInChildren<Text>().text = script.WinMessageStrings[index];
             base.Enter();
         }
 
@@ -95,6 +101,8 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            script.WinDialog.Action = aMechGameGUIBase.eActionType.kFadeOut;
             base.Exit();
         }
     }

@@ -54,7 +54,7 @@ namespace Artimech
         {
             stateGameBase gameBase = (stateGameBase)state;
             aMechGmController controller = gameBase.StateGameObject.GetComponent<aMechGmController>();
-            if (gameBase.StateTime >= controller.IncrementColorTimeLimit && controller.SymbolDataList.Count>controller.CurrentPuzzelIndex+1)
+            if (gameBase.StateTime >= controller.IncrementColorTimeLimit && controller.CurrentPuzzelIndex < controller.SymbolDataList.Count)
                 return m_ChangeStateName;
             return null;
         }

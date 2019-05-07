@@ -19,6 +19,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 #region XML_DATA
 
@@ -33,8 +34,8 @@ using System.Collections.Generic;
   <State>
     <alias>Input is good</alias>
     <comment></comment>
-    <posX>25</posX>
-    <posY>338</posY>
+    <posX>13</posX>
+    <posY>536</posY>
     <sizeX>168</sizeX>
     <sizeY>50</sizeY>
   </State>
@@ -88,6 +89,22 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            //script.WinDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            aMechGmSymbolButton symbolButton = script.ButtonClicked.gameObject.GetComponent<aMechGmSymbolButton>();
+            AudioSource audio = symbolButton.SymbolSound;
+
+            float wasPitch = audio.pitch;
+            audio.pitch = symbolButton.SymbolSoundPitchChange;
+            audio.Play();
+            audio.pitch = wasPitch;
+
+            //aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            for (int i = 0; i < script.Buttons.Length; i++)
+                script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = false;
+
+            script.RepeatDialog.Action = aMechGameGUIBase.eActionType.kFadeOut;
+
             base.Enter();
         }
 
@@ -96,6 +113,8 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            script.CurrentPuzzelIndex += 1;
             base.Exit();
         }
     }

@@ -27,22 +27,22 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmControllerPlayBackSymbol_To_gmControllerWaitForInput : stateConditionalBase
+    public class gmControllerSuccessInput_To_gmControllerAddSymbol : stateConditionalBase
     {
-
-        public gmControllerPlayBackSymbol_To_gmControllerWaitForInput(string changeStateName) : base(changeStateName)
+        
+        public gmControllerSuccessInput_To_gmControllerAddSymbol(string changeStateName) : base (changeStateName)
         {
-
+            
         }
 
         public override void Enter(baseState state)
         {
-
+            
         }
 
         public override void Exit(baseState state)
         {
-
+            
         }
 
         /// <summary>
@@ -53,12 +53,9 @@ namespace Artimech
         public override string UpdateConditionalTest(baseState state)
         {
             stateGameBase gameBase = (stateGameBase)state;
-            aMechGmController controller = gameBase.StateGameObject.GetComponent<aMechGmController>();
-
-            if (gameBase.StateTime >= controller.AfterSymbolShowTimeLimit &&
-                controller.SymbolDataList.Count == controller.CurrentPuzzelIndex + 1)
+            aMechGmController script = gameBase.StateGameObject.GetComponent<aMechGmController>();
+            if (gameBase.StateTime > script.PostGoodTimeLimit)
                 return m_ChangeStateName;
-
             return null;
         }
     }

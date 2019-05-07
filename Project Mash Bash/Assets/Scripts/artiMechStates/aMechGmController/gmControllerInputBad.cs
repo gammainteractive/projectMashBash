@@ -32,12 +32,12 @@ using UnityEngine.UI;
 
 <stateMetaData>
   <State>
-    <alias>Play Back Symbol</alias>
+    <alias>Input Bad</alias>
     <comment></comment>
-    <posX>598</posX>
-    <posY>344</posY>
-    <sizeX>132</sizeX>
-    <sizeY>37</sizeY>
+    <posX>129</posX>
+    <posY>356</posY>
+    <sizeX>159</sizeX>
+    <sizeY>48</sizeY>
   </State>
 </stateMetaData>
 
@@ -46,18 +46,17 @@ using UnityEngine.UI;
 #endregion
 namespace Artimech
 {
-    public class gmControllerPlayBackSymbol : stateGameBase
+    public class gmControllerInputBad : stateGameBase
     {
 
         /// <summary>
         /// State constructor.
         /// </summary>
         /// <param name="gameobject"></param>
-        public gmControllerPlayBackSymbol(GameObject gameobject) : base(gameobject)
+        public gmControllerInputBad(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerPlayBackSymbol_To_gmControllerResetPuzzelIndex("gmControllerResetPuzzelIndex"));
-            m_ConditionalList.Add(new gmControllerPlayBackSymbol_To_gmControllerIncrementSymbol("gmControllerIncrementSymbol"));
+            m_ConditionalList.Add(new gmControllerInputBad_To_gmControllerFailedInput("gmControllerFailedInput"));
         }
 
         /// <summary>
@@ -90,14 +89,15 @@ namespace Artimech
         public override void Enter()
         {
             aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
-            aMechGmController.SymbolData data = script.SymbolDataList[script.CurrentPuzzelIndex];
+            script.LooseDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            script.RepeatDialog.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            script.TimerBar.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            //script.ErrorSound.Stop();
+            script.ErrorSound.Play();
 
-            //Button button = script.Buttons[data.ButtonIndexNum];
-            aMechGmSymbolButton symbolButton = data.ButtonPtr.gameObject.GetComponent<aMechGmSymbolButton>();
-            symbolButton.SetPulseColor(data.Color);
-            //script.WatchDialog.WasAction = aMechGameGUIBase.eActionType.kNada;
-            script.WatchDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
-            //script.CurrentPuzzelIndex += 1;
+            //aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            for (int i = 0; i < script.Buttons.Length; i++)
+                script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = false;
             base.Enter();
         }
 
@@ -106,8 +106,6 @@ namespace Artimech
         /// </summary>
         public override void Exit()
         {
-            //aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
-            //script.CurrentPuzzelIndex = 0;
             base.Exit();
         }
     }

@@ -94,6 +94,11 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            StateGameObject.SetActive(true);
+            aMechGameGUIBase script = StateGameObject.GetComponent<aMechGameGUIBase>();
+            for (int i = 0; i < script.LinkedGameObjects.Length; i++)
+                script.LinkedGameObjects[i].SetActive(true);
+            
             base.Enter();
         }
 

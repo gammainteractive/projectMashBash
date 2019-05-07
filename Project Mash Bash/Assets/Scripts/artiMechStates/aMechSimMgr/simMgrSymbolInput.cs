@@ -86,8 +86,8 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
-            SimMgr.Inst.WatchMessage.Action = aMechGameGUIBase.eActionType.kFadeOut;
-            SimMgr.Inst.RepeatMessage.Action = aMechGameGUIBase.eActionType.kFadeIn;
+           // SimMgr.Inst.WatchMessage.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            //SimMgr.Inst.RepeatMessage.Action = aMechGameGUIBase.eActionType.kFadeIn;
             base.Enter();
         }
 

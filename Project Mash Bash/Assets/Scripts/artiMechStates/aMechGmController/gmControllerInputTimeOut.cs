@@ -33,8 +33,8 @@ using System.Collections.Generic;
   <State>
     <alias>Input Time Out</alias>
     <comment></comment>
-    <posX>283</posX>
-    <posY>339</posY>
+    <posX>329</posX>
+    <posY>358</posY>
     <sizeX>141</sizeX>
     <sizeY>42</sizeY>
   </State>

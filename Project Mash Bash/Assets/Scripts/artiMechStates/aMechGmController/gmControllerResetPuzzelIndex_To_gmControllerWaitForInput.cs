@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmControllerIncrementSymbol_To_gmControllerPlayBackSymbol : stateConditionalBase
+    public class gmControllerResetPuzzelIndex_To_gmControllerWaitForInput : stateConditionalBase
     {
         
-        public gmControllerIncrementSymbol_To_gmControllerPlayBackSymbol(string changeStateName) : base (changeStateName)
+        public gmControllerResetPuzzelIndex_To_gmControllerWaitForInput(string changeStateName) : base (changeStateName)
         {
             
         }

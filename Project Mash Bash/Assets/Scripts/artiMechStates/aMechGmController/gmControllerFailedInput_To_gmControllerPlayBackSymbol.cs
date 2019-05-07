@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmControllerFailedInput_To_gmControllerWait : stateConditionalBase
+    public class gmControllerFailedInput_To_gmControllerPlayBackSymbol : stateConditionalBase
     {
         
-        public gmControllerFailedInput_To_gmControllerWait(string changeStateName) : base (changeStateName)
+        public gmControllerFailedInput_To_gmControllerPlayBackSymbol(string changeStateName) : base (changeStateName)
         {
             
         }
@@ -52,17 +52,11 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            string strOut = null;
-
-#if ARTIMECH_THIS_SHOULD_NEVER_BE_TRUE_BUT_IS_AN_EXAMPLE_OF_A_CONDITION_BEING_TRUE
-            This is an example of setting a contition to true if the gameobject
-            falls below a certain height ingame.
-            if (state.m_GameObject.transform.position.y <= 1000)
-                strOut = m_ChangeStateName;
-#endif
-
-
-            return strOut;
+            stateGameBase gameBase = (stateGameBase)state;
+            aMechGmController script = gameBase.StateGameObject.GetComponent<aMechGmController>();
+            if (gameBase.StateTime > script.PostGoodTimeLimit)
+                return m_ChangeStateName;
+            return null;
         }
     }
 }

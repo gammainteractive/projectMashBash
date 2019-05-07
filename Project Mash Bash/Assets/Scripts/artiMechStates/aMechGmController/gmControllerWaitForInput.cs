@@ -34,8 +34,8 @@ using UnityEngine.UI;
   <State>
     <alias>Wait For Input</alias>
     <comment></comment>
-    <posX>361</posX>
-    <posY>464</posY>
+    <posX>288</posX>
+    <posY>547</posY>
     <sizeX>142</sizeX>
     <sizeY>42</sizeY>
   </State>
@@ -56,8 +56,9 @@ namespace Artimech
         public gmControllerWaitForInput(GameObject gameobject) : base(gameobject)
         {
             //<ArtiMechConditions>
+            m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerInputBad("gmControllerInputBad"));
+            m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerInputIsGood("gmControllerInputIsGood"));
             m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerInputTimeOut("gmControllerInputTimeOut"));
-            m_ConditionalList.Add(new gmControllerWaitForInput_To_gmControllerButtonPressed("gmControllerButtonPressed"));
         }
 
         /// <summary>
@@ -92,13 +93,16 @@ namespace Artimech
         public override void Enter()
         {
             aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+
+            script.OnClickBadBool = false;
+            script.OnClickGoodBool = false;
+
             //turn on the buttons
             for (int i = 0; i < script.Buttons.Length; i++)
             {
 
                 script.Buttons[i].gameObject.GetComponent<Image>().raycastTarget = true;
                 ColorBlock cb = script.Buttons[i].colors;
-                //if (script.Buttons[i] != script.Buttons[script.SymbolDataList[i].ButtonIndexNum])
                 if(script.Buttons[i]!=script.SymbolDataList[script.CurrentPuzzelIndex].ButtonPtr)
                     cb.pressedColor = new Color(1, 0, 0, 1);
                 else
@@ -112,6 +116,10 @@ namespace Artimech
                 //script.Buttons[i].colors = new Color(script.SymbolDataList[i].Color.r, script.SymbolDataList[i].Color.g, script.SymbolDataList[i].Color.b, script.SymbolDataList[i].Color.a);
                 //script.Buttons[i].gameObject.GetComponent<Button>().colors;
             }
+
+            script.RepeatDialog.Action = aMechGameGUIBase.eActionType.kFadeIn;
+            script.WatchDialog.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            script.TimerBar.Action = aMechGameGUIBase.eActionType.kFadeIn;
 
             base.Enter();
         }

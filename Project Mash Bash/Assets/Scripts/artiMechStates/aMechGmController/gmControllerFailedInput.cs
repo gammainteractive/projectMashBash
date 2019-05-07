@@ -33,10 +33,10 @@ using System.Collections.Generic;
   <State>
     <alias>Input Sequench Failure</alias>
     <comment></comment>
-    <posX>248</posX>
-    <posY>218</posY>
-    <sizeX>162</sizeX>
-    <sizeY>53</sizeY>
+    <posX>325</posX>
+    <posY>246</posY>
+    <sizeX>163</sizeX>
+    <sizeY>41</sizeY>
   </State>
 </stateMetaData>
 
@@ -55,7 +55,7 @@ namespace Artimech
         public gmControllerFailedInput(GameObject gameobject) : base (gameobject)
         {
             //<ArtiMechConditions>
-            m_ConditionalList.Add(new gmControllerFailedInput_To_gmControllerWait("gmControllerWait"));
+            m_ConditionalList.Add(new gmControllerFailedInput_To_gmControllerPlayBackSymbol("gmControllerPlayBackSymbol"));
         }
 
         /// <summary>
@@ -87,6 +87,9 @@ namespace Artimech
         /// </summary>
         public override void Enter()
         {
+            aMechGmController script = StateGameObject.GetComponent<aMechGmController>();
+            script.LooseDialog.Action = aMechGameGUIBase.eActionType.kFadeOut;
+            script.CurrentPuzzelIndex = 0;
             base.Enter();
         }
 

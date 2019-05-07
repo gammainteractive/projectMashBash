@@ -27,10 +27,10 @@ using UnityEngine;
 /// </summary>
 namespace Artimech
 {
-    public class gmControllerIncrementSymbol_To_gmControllerPlayBackSymbol : stateConditionalBase
+    public class gmControllerWaitForInput_To_gmControllerInputBad : stateConditionalBase
     {
         
-        public gmControllerIncrementSymbol_To_gmControllerPlayBackSymbol(string changeStateName) : base (changeStateName)
+        public gmControllerWaitForInput_To_gmControllerInputBad(string changeStateName) : base (changeStateName)
         {
             
         }
@@ -52,7 +52,16 @@ namespace Artimech
         /// <returns>true or false depending if transition conditions are met.</returns>
         public override string UpdateConditionalTest(baseState state)
         {
-            return m_ChangeStateName;
+            stateGameBase gameBase = (stateGameBase)state;
+            aMechGmController script = gameBase.StateGameObject.GetComponent<aMechGmController>();
+
+            if (script.OnClickBadBool)
+                return m_ChangeStateName;
+
+            if(gameBase.StateTime>= script.PerSymbolInputTimeLimit)
+                return m_ChangeStateName;
+
+            return null;
         }
     }
 }
